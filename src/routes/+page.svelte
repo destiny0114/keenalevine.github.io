@@ -1,6 +1,43 @@
 <script>
+	import { gsap } from 'gsap';
+	import { onMount } from 'svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import MockUp from '$lib/images/mockup.png';
+	import Subtract from '$lib/assets/subtract.svg?raw';
+
+	let marquee;
+
+	onMount(() => {
+		const resizeMarquee = () => {
+			const marqueeList = marquee.firstChild;
+			const cloneMarqueeList = marqueeList.cloneNode(true);
+			marquee.append(cloneMarqueeList);
+
+			const width = parseInt(getComputedStyle(marqueeList).getPropertyValue('width'), 10);
+			const gap = parseInt(getComputedStyle(marqueeList).getPropertyValue('column-gap'), 10);
+			const distance = -1 * ((Number.isNaN(gap) ? 0 : gap) + width);
+
+			gsap.to(
+				marquee.children,
+
+				{
+					x: `+=${distance}`,
+					duration: 20,
+					ease: 'none',
+					repeat: -1,
+					modifiers: {
+						x: (x) => {
+							return (parseFloat(x) % distance) + 'px';
+						}
+					}
+				}
+			);
+		};
+
+		resizeMarquee();
+
+		window.addEventListener('resize', resizeMarquee);
+	});
 </script>
 
 <main>
@@ -37,6 +74,48 @@
 				<img class="hero-img" src={MockUp} alt="hero_image" />
 			</div>
 		</div>
+	</section>
+	<section class="marquee" bind:this={marquee}>
+		<ul class="marquee-list">
+			<li class="marquee-elem marquee-icon">
+				{@html Subtract}
+			</li>
+			<li class="marquee-elem marquee-text">Design</li>
+			<li class="marquee-elem marquee-icon">
+				{@html Subtract}
+			</li>
+			<li class="marquee-elem marquee-text">Development</li>
+			<li class="marquee-elem marquee-icon">
+				{@html Subtract}
+			</li>
+
+			<li class="marquee-elem marquee-text">Website</li>
+			<li class="marquee-elem marquee-icon">
+				{@html Subtract}
+			</li>
+
+			<li class="marquee-elem marquee-text">E-commerce</li>
+			<li class="marquee-elem marquee-icon">
+				{@html Subtract}
+			</li>
+			<li class="marquee-elem marquee-text">UI/UX</li>
+			<li class="marquee-elem marquee-icon">
+				{@html Subtract}
+			</li>
+			<li class="marquee-elem marquee-text">Wordpress</li>
+			<li class="marquee-elem marquee-icon">
+				{@html Subtract}
+			</li>
+			<li class="marquee-elem marquee-text">Webflow</li>
+			<li class="marquee-elem marquee-icon">
+				{@html Subtract}
+			</li>
+			<li class="marquee-elem marquee-text">Wix</li>
+			<li class="marquee-elem marquee-icon">
+				{@html Subtract}
+			</li>
+			<li class="marquee-elem marquee-text">Web Hosting</li>
+		</ul>
 	</section>
 </main>
 
@@ -86,7 +165,7 @@
 
 	.cta-btns .primary-cta {
 		text-decoration: none;
-		font-family: 'Rubik';
+		font-family: 'Rubik', sans-serif;
 		font-style: normal;
 		font-weight: 500;
 		font-size: 1.5rem;
@@ -99,7 +178,7 @@
 
 	.cta-btns .secondary-cta {
 		text-decoration: none;
-		font-family: 'Rubik';
+		font-family: 'Rubik', sans-serif;
 		font-style: normal;
 		font-weight: 500;
 		font-size: 1.5rem;
@@ -120,6 +199,49 @@
 	.hero-img {
 		width: 1200px;
 		padding: 4em;
+	}
+
+	section.marquee {
+		position: relative;
+		overflow: hidden;
+		display: flex;
+		padding: 2em 0;
+		background-color: #272b2c;
+	}
+
+	.marquee-list {
+		display: flex;
+		justify-content: flex-start;
+		flex-shrink: 0;
+		align-items: center;
+		white-space: nowrap;
+	}
+
+	.marquee-text {
+		color: white;
+		font-family: 'Newsreader', serif;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 5rem;
+		display: block;
+	}
+
+	.marquee-icon :global(svg) {
+		width: 3em;
+		height: 100%;
+		margin: 0 2em;
+	}
+
+	@media only screen and (min-width: 680px) {
+		.hero-img {
+			width: 600px;
+		}
+	}
+
+	@media only screen and (min-width: 920px) {
+		.hero-img {
+			width: 900px;
+		}
 	}
 
 	@media only screen and (min-width: 1440px) {
