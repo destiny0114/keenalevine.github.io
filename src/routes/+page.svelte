@@ -117,6 +117,53 @@
 			<li class="marquee-elem marquee-text">Web Hosting</li>
 		</ul>
 	</section>
+	<section class="services">
+		<div class="services-content wrapper">
+			<div class="left-col">
+				<h5>Services</h5>
+			</div>
+			<div class="right-col">
+				<h3 class="title">I can <span class="highlight">help</span> you with ...</h3>
+				<div class="description">
+					<p>
+						I specialise in offering bespoke web design and web development services to small and
+						big businesses alike. My aim is to help businesses establish a strong online presence
+						and connect with their target audience effectively.
+					</p>
+					<div class="experience">
+						<h5>3</h5>
+						<small>Years of experience</small>
+					</div>
+					<div class="experience">
+						<h5>100+</h5>
+						<small>Project done</small>
+					</div>
+				</div>
+				<div class="process">
+					<div class="card">
+						<div class="numeric">01</div>
+						<h5>Design</h5>
+						<p>
+							I make web designs that engage your audience and create the user experience you want.
+						</p>
+					</div>
+					<div class="card">
+						<div class="numeric">02</div>
+						<h5>Development</h5>
+						<p>Bringing visuals to life through developing highly functional web solutions.</p>
+					</div>
+					<div class="card">
+						<div class="numeric">03</div>
+						<h5>The Full Package</h5>
+						<p>
+							Get the best of both worlds for your website, capture your brand identity and get
+							fully functional features.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </main>
 
 <style>
@@ -230,6 +277,140 @@
 		width: 3em;
 		height: 100%;
 		margin: 0 2em;
+	}
+
+	section.services {
+		background: #29413a;
+		box-shadow: 0px -8px 25px rgba(0, 0, 0, 0.25);
+		padding: 15em 0;
+	}
+
+	.services-content.wrapper {
+		display: flex;
+	}
+
+	.services-content .left-col {
+		width: 20%;
+	}
+
+	.services-content .right-col {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 7em;
+	}
+
+	.left-col h5 {
+		font-family: 'Roboto', sans-serif;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 1.3rem;
+		letter-spacing: 0.25em;
+		color: #85aeac;
+		text-transform: uppercase;
+		margin: 0;
+	}
+
+	.right-col .title {
+		font-family: 'Rubik', sans-serif;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 6.4rem;
+		color: #b2cfc599;
+		line-height: 80%;
+		margin: 0;
+	}
+
+	.title .highlight {
+		color: #e6e0c6;
+	}
+
+	.right-col .description {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 7em;
+	}
+
+	.description p {
+		max-width: 35%;
+		font-family: 'Rubik', sans-serif;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 1.6rem;
+		line-height: 145%;
+		color: #d0e0e3;
+	}
+
+	.description .experience {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		width: 10em;
+	}
+
+	.description .experience h5 {
+		font-family: Rubik, sans-serif;
+		font-size: 6.4rem;
+		font-weight: 400;
+		text-align: left;
+		color: #b2cfc5;
+		margin: 0;
+	}
+
+	.description .experience small {
+		font-family: Rubik, sans-serif;
+		font-weight: 400;
+		font-size: 1.4rem;
+		line-height: 1.7rem;
+		color: #7e8f8b;
+		margin: 0;
+		max-width: 5em;
+	}
+
+	.right-col .process {
+		display: flex;
+		justify-content: flex-start;
+		align-items: stretch;
+		gap: 4em;
+	}
+
+	.process .card {
+		display: flex;
+		flex-direction: column;
+		gap: 2em;
+		padding: 4em;
+		background: #264d49;
+		box-shadow: 10px 10px 50px rgba(35, 40, 46, 0.25);
+	}
+
+	.card .numeric {
+		font-family: 'Rubik', sans-serif;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 4.8rem;
+		color: #92a9a44d;
+	}
+
+	.card h5,
+	.card p {
+		font-family: 'Rubik', sans-serif;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 2.8rem;
+		color: #e6e0c6;
+		margin: 0;
+	}
+
+	.card h5 {
+		font-size: 2.4rem;
+	}
+
+	.card p {
+		flex-grow: 1;
+
+		font-size: 1.4rem;
+		max-width: 15em;
 	}
 
 	@media only screen and (min-width: 680px) {
