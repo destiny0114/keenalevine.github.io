@@ -3,7 +3,11 @@
 	import { onMount } from 'svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import MockUp from '$lib/images/mockup.png';
+	import Profile from '$lib/images/profile.png';
+
 	import Subtract from '$lib/assets/subtract.svg?raw';
+	import Square from '$lib/assets/square.svg?raw';
+	import Plus from '$lib/assets/plus.svg?raw';
 
 	let marquee;
 
@@ -164,6 +168,52 @@
 			</div>
 		</div>
 	</section>
+	<section class="about">
+		<div class="wrapper">
+			<div class="icon plus-1">
+				{@html Plus}
+			</div>
+			<div class="icon plus-2">
+				{@html Plus}
+			</div>
+			<div class="icon plus-3">
+				{@html Plus}
+			</div>
+			<div class="square">
+				{@html Square}
+			</div>
+			<div class="hire">
+				<div class="left-col">
+					<img src={Profile} alt="profile" class="profile-img" />
+				</div>
+				<div class="right-col">
+					<h5>About me</h5>
+					<h3 class="title">Why <span class="highlight">Hire Me </span>For Your Next Project ?</h3>
+					<div class="description">
+						<p>
+							I am a self-employed, self-motivated, and self-taught web developer with three years
+							experience who is passionate about web development and figuring out solutions to
+							improve usability and functionality of websites and systems.
+						</p>
+						<p>
+							My skills are manipulating and customizing themes and plugins, building themes from
+							scratch, e-commerce implementation and advanced programming. I also convert designs
+							from any format (Photoshop, Illustrator, Image, Figma, other or even a paper sketch)
+							to a fully working website that’s either based on a website builder or coded free
+							handedly. My conversions are pixel perfect and 100% faithful to the source material
+							without exceptions.
+						</p>
+						<p>
+							And thanks to my expertise in various of web development languages include frontend
+							and backend, I can build fully customizable Web applications following your vision and
+							the functionalities desired.
+						</p>
+						<p>Are you excited work with me to your project? I know I am!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </main>
 
 <style>
@@ -300,7 +350,7 @@
 		gap: 7em;
 	}
 
-	.left-col h5 {
+	.services-content .left-col h5 {
 		font-family: 'Roboto', sans-serif;
 		font-style: normal;
 		font-weight: 600;
@@ -311,7 +361,7 @@
 		margin: 0;
 	}
 
-	.right-col .title {
+	.services-content .right-col .title {
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
 		font-weight: 400;
@@ -321,36 +371,36 @@
 		margin: 0;
 	}
 
-	.title .highlight {
+	.services-content .title .highlight {
 		color: #e6e0c6;
 	}
 
-	.right-col .description {
+	.services-content .right-col .description {
 		display: flex;
 		justify-content: flex-start;
 		align-items: center;
 		gap: 7em;
 	}
 
-	.description p {
+	.services-content .description p {
 		max-width: 35%;
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
-		font-weight: 400;
+		font-weight: 300;
 		font-size: 1.6rem;
 		line-height: 145%;
 		color: #d0e0e3;
 	}
 
-	.description .experience {
+	.services-content .description .experience {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
 		width: 10em;
 	}
 
-	.description .experience h5 {
-		font-family: Rubik, sans-serif;
+	.services-content .description .experience h5 {
+		font-family: 'Rubik', sans-serif;
 		font-size: 6.4rem;
 		font-weight: 400;
 		text-align: left;
@@ -358,9 +408,9 @@
 		margin: 0;
 	}
 
-	.description .experience small {
-		font-family: Rubik, sans-serif;
-		font-weight: 400;
+	.services-content .description .experience small {
+		font-family: 'Rubik', sans-serif;
+		font-weight: 200;
 		font-size: 1.4rem;
 		line-height: 1.7rem;
 		color: #7e8f8b;
@@ -368,14 +418,14 @@
 		max-width: 5em;
 	}
 
-	.right-col .process {
+	.services-content .right-col .process {
 		display: flex;
 		justify-content: flex-start;
 		align-items: stretch;
 		gap: 4em;
 	}
 
-	.process .card {
+	.services-content .process .card {
 		display: flex;
 		flex-direction: column;
 		gap: 2em;
@@ -384,7 +434,7 @@
 		box-shadow: 10px 10px 50px rgba(35, 40, 46, 0.25);
 	}
 
-	.card .numeric {
+	.process .card .numeric {
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
 		font-weight: 400;
@@ -392,8 +442,8 @@
 		color: #92a9a44d;
 	}
 
-	.card h5,
-	.card p {
+	.process .card h5,
+	.process .card p {
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
 		font-weight: 400;
@@ -402,15 +452,107 @@
 		margin: 0;
 	}
 
-	.card h5 {
+	.process .card h5 {
 		font-size: 2.4rem;
 	}
 
-	.card p {
-		flex-grow: 1;
-
+	.process .card p {
 		font-size: 1.4rem;
 		max-width: 15em;
+	}
+
+	section.about {
+		background: #1e312e;
+		padding: 15em 0;
+		position: relative;
+	}
+
+	.about .square {
+		position: absolute;
+		width: 85em;
+		left: -3em;
+		top: 2em;
+	}
+
+	.about .icon {
+		position: absolute;
+		z-index: 15;
+	}
+
+	.about .plus-1 {
+		left: 8em;
+		bottom: 5em;
+	}
+
+	.about .plus-2 {
+		left: 30em;
+	}
+
+	.about .plus-3 {
+		right: 60%;
+		bottom: 18em;
+	}
+
+	.about .hire {
+		display: flex;
+	}
+
+	.hire .left-col {
+		flex: 1;
+		position: relative;
+	}
+
+	.hire .left-col .profile-img {
+		position: absolute;
+		min-width: 60em;
+		bottom: -8em;
+		z-index: 5;
+	}
+
+	.hire .right-col {
+		max-width: 75em;
+		display: flex;
+		flex-direction: column;
+		gap: 3em;
+	}
+
+	.hire .right-col h5 {
+		font-family: 'Roboto', sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 1.3rem;
+		letter-spacing: 0.25em;
+		color: #b2cfc5;
+		text-transform: uppercase;
+		margin: 0;
+	}
+
+	.hire .right-col .title {
+		font-family: 'Rubik', sans-serif;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 7.4rem;
+		color: #b2cfc5;
+		line-height: 7.6rem;
+		margin: 0;
+	}
+
+	.hire .title .highlight {
+		color: #fff7ac;
+	}
+
+	.hire .description {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.hire .description p {
+		font-family: 'Rubik', sans-serif;
+		font-style: normal;
+		font-weight: 200;
+		font-size: 1.5rem;
+		line-height: 145%;
+		color: white;
 	}
 
 	@media only screen and (min-width: 680px) {
