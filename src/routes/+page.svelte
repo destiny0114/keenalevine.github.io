@@ -1,15 +1,32 @@
 <script>
 	import { gsap } from 'gsap';
 	import { onMount } from 'svelte';
+
 	import Navbar from '$lib/components/Navbar.svelte';
+	import Accordion from '$lib/components/Accordion.svelte';
+	import AccordionItem from '$lib/components/AccordionItem.svelte';
+
 	import MockUp from '$lib/images/mockup.png';
 	import Profile from '$lib/images/profile.png';
 
 	import Subtract from '$lib/assets/subtract.svg?raw';
 	import Square from '$lib/assets/square.svg?raw';
 	import Plus from '$lib/assets/plus.svg?raw';
+	import PS from '$lib/assets/ps.svg?raw';
+	import AI from '$lib/assets/ai.svg?raw';
+	import XD from '$lib/assets/xd.svg?raw';
+	import Figma from '$lib/assets/figma.svg?raw';
+	import Wordpress from '$lib/assets/wordpress.svg?raw';
+	import Webflow from '$lib/assets/webflow.svg?raw';
+	import Wix from '$lib/assets/wix.svg?raw';
+	import Link from '$lib/assets/link.svg?raw';
+
+	import { AccordionStore } from '$lib/stores/AccordionStore';
 
 	let marquee;
+	let accordionState = {
+		current: 0
+	};
 
 	onMount(() => {
 		const resizeMarquee = () => {
@@ -170,13 +187,13 @@
 	</section>
 	<section class="about">
 		<div class="wrapper">
-			<div class="icon plus-1">
+			<div class="art plus-1">
 				{@html Plus}
 			</div>
-			<div class="icon plus-2">
+			<div class="art plus-2">
 				{@html Plus}
 			</div>
-			<div class="icon plus-3">
+			<div class="art plus-3">
 				{@html Plus}
 			</div>
 			<div class="square">
@@ -212,6 +229,82 @@
 					</div>
 				</div>
 			</div>
+			<div class="expertise">
+				<div class="left-col">
+					<h3 class="title">My way of getting <span class="highlight">things done</span></h3>
+					<div class="skillset">
+						<div class="icon">
+							{@html PS}
+						</div>
+						<div class="icon">
+							{@html AI}
+						</div>
+						<div class="icon">
+							{@html XD}
+						</div>
+						<div class="icon">
+							{@html Figma}
+						</div>
+						<div class="icon">
+							{@html Wordpress}
+						</div>
+						<div class="icon">
+							{@html Webflow}
+						</div>
+						<div class="icon">
+							{@html Wix}
+						</div>
+					</div>
+				</div>
+				<div class="right-col">
+					<h5>Expertise</h5>
+					<p>
+						I specialise in offering bespoke web design and web development services to small and
+						big businesses alike. My aim is to help businesses establish a strong online presence
+						and connect with their target audience effectively.
+					</p>
+					<Accordion bind:current={accordionState.current}>
+						{#each $AccordionStore as AccordionMenu, index}
+							<AccordionItem key={index}>
+								<div slot="label">{AccordionMenu.label}</div>
+								<div slot="description">
+									{AccordionMenu.description}
+								</div>
+							</AccordionItem>
+						{/each}
+					</Accordion>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="showcase">
+		<div class="wrapper">
+			<div class="heading">
+				<h5>Exploration</h5>
+				<h1>Featured Projects</h1>
+			</div>
+			<div class="project-wrapper">
+				<div class="project-grid">
+					<div class="project-card">
+						<div class="content">
+							<div class="heading">
+								<div class="text">
+									<h3>Duis mauris.</h3>
+									<p>
+										Mauris ut condimentum massa. Curabitur odio dui, semper id justo eu, tempor
+										cursus libero. Donec iaculis, tellus non efficitur ullamcorper.
+									</p>
+								</div>
+								<a href="/" class="cta-go">{@html Link}</a>
+							</div>
+						</div>
+						<img src="https://nextweb.fi/_nuxt/portfolio_getsport_io.8b5ca986.webp" alt="" />
+					</div>
+					<div class="project-card" />
+					<div class="project-card" />
+					<div class="project-card" />
+				</div>
+			</div>
 		</div>
 	</section>
 </main>
@@ -221,7 +314,7 @@
 		background: linear-gradient(107.47deg, #304b41 -19.31%, #0c181c 109.3%);
 	}
 
-	.content {
+	.hero .content {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
@@ -471,17 +564,17 @@
 		position: absolute;
 		width: 85em;
 		left: -3em;
-		top: 2em;
+		top: 6em;
 	}
 
-	.about .icon {
+	.about .art {
 		position: absolute;
 		z-index: 15;
 	}
 
 	.about .plus-1 {
 		left: 8em;
-		bottom: 5em;
+		top: 96em;
 	}
 
 	.about .plus-2 {
@@ -490,11 +583,12 @@
 
 	.about .plus-3 {
 		right: 60%;
-		bottom: 18em;
+		top: 80em;
 	}
 
 	.about .hire {
 		display: flex;
+		margin-bottom: 17em;
 	}
 
 	.hire .left-col {
@@ -553,6 +647,199 @@
 		font-size: 1.5rem;
 		line-height: 145%;
 		color: white;
+	}
+
+	.about .expertise {
+		display: flex;
+		flex-direction: row;
+		gap: 10em;
+		margin-top: 35em;
+	}
+
+	.expertise .left-col {
+		max-width: 50%;
+	}
+
+	.expertise .left-col .title {
+		font-family: 'Rubik', sans-serif;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 7.4rem;
+		color: #b2cfc5;
+		line-height: 7.6rem;
+		margin: 0;
+	}
+
+	.expertise .left-col .skillset {
+		margin-top: 10em;
+		display: grid;
+		grid-template-columns: repeat(4, min-content);
+		gap: 3em;
+	}
+
+	.expertise .left-col .skillset .icon {
+		box-shadow: 0px 4px 40px 0px #09090c1a;
+	}
+
+	.expertise .title .highlight {
+		color: #fff7ac;
+	}
+
+	.expertise .right-col {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 3em;
+	}
+
+	.expertise .right-col h5 {
+		font-family: 'Roboto', sans-serif;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 1.3rem;
+		letter-spacing: 0.25em;
+		color: #85aeac;
+		text-transform: uppercase;
+		margin: 0;
+		text-align: right;
+	}
+
+	.expertise .right-col p {
+		font-family: 'Rubik', sans-serif;
+		font-style: normal;
+		font-weight: 400;
+		font-size: 1.6rem;
+		line-height: 145%;
+		color: #d0e0e3;
+	}
+
+	section.showcase {
+		padding: 15em 0;
+		background-color: #fffcf1;
+	}
+
+	.showcase .heading h5 {
+		font-family: 'Roboto', sans-serif;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 1.3rem;
+		letter-spacing: 0.25em;
+		color: #1e312e;
+		text-transform: uppercase;
+	}
+
+	.showcase .heading h1 {
+		font-family: Rubik;
+		font-size: 9.6rem;
+		font-weight: 700;
+		text-align: left;
+		margin: 0;
+		margin-left: -5px;
+		color: #1e312e;
+		text-transform: uppercase;
+	}
+
+	.showcase .project-wrapper {
+		display: flex;
+		justify-content: center;
+	}
+
+	.showcase .project-grid {
+		display: grid;
+		gap: 2.5em;
+		grid-template-columns: 66rem 60rem;
+		grid-template-rows: 64rem;
+	}
+
+	.showcase .project-grid .project-card {
+		background-color: red;
+		height: 64rem;
+		border-radius: 30px;
+		box-shadow: 4px 8px 4px 0px #0000001a;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.showcase .project-grid .project-card img {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		user-select: none;
+	}
+
+	.showcase .project-grid .project-card .content {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		padding: 5em;
+	}
+
+	.showcase .project-grid .project-card .content .heading {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.showcase .project-grid .project-card .content .heading .text {
+		max-width: 70%;
+	}
+
+	.showcase .project-grid .project-card .content .heading .text h3 {
+		font-family: Rubik, sans-serif;
+		font-size: 4rem;
+		font-weight: 500;
+		line-height: 4.7rem;
+		color: white;
+		margin: 0;
+	}
+
+	.showcase .project-grid .project-card .content .heading .text p {
+		font-family: Rubik, sans-serif;
+		font-size: 1.4rem;
+		font-weight: 400;
+		line-height: 2rem;
+		color: white;
+	}
+
+	.showcase .project-grid .project-card .content .heading .cta-go {
+		text-decoration: none;
+		backdrop-filter: blur(50px);
+		background-color: #ffffff05;
+		border-radius: 99px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		width: 64px;
+		height: 64px;
+		padding: 20px;
+	}
+
+	.showcase .project-grid .project-card:first-child {
+		grid-column: 1 / span 1;
+		grid-row: 1/2;
+		min-width: 66rem;
+	}
+
+	.showcase .project-grid .project-card:nth-child(2) {
+		grid-column: 2 / span 1;
+		grid-row: 1/2;
+		min-width: 60rem;
+	}
+
+	.showcase .project-grid .project-card:nth-child(3) {
+		grid-column: 1 / span 1;
+		grid-row: 2/3;
+		min-width: 60rem;
+		width: 60rem;
+	}
+
+	.showcase .project-grid .project-card:nth-child(4) {
+		grid-column: 2 / span 1;
+		grid-row: 2/3;
+		min-width: 66rem;
+		transform: translateX(-6rem);
 	}
 
 	@media only screen and (min-width: 680px) {
