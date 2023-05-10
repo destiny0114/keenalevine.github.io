@@ -20,6 +20,8 @@
 	import Webflow from '$lib/assets/webflow.svg?raw';
 	import Wix from '$lib/assets/wix.svg?raw';
 	import Link from '$lib/assets/link.svg?raw';
+	import Link2 from '$lib/assets/red_link.svg?raw';
+	import Github from '$lib/assets/black_github_icon.svg?raw';
 
 	import { AccordionStore } from '$lib/stores/AccordionStore';
 
@@ -300,9 +302,149 @@
 						</div>
 						<img src="https://nextweb.fi/_nuxt/portfolio_getsport_io.8b5ca986.webp" alt="" />
 					</div>
-					<div class="project-card" />
-					<div class="project-card" />
-					<div class="project-card" />
+					<div class="project-card">
+						<div class="content">
+							<div class="heading">
+								<div class="text">
+									<h3>Duis mauris.</h3>
+									<p>
+										Mauris ut condimentum massa. Curabitur odio dui, semper id justo eu, tempor
+										cursus libero. Donec iaculis, tellus non efficitur ullamcorper.
+									</p>
+								</div>
+								<a href="/" class="cta-go">{@html Link}</a>
+							</div>
+						</div>
+						<img src="https://nextweb.fi/_nuxt/portfolio_getsport_io.8b5ca986.webp" alt="" />
+					</div>
+					<div class="project-card">
+						<div class="content">
+							<div class="heading">
+								<div class="text">
+									<h3>Duis mauris.</h3>
+									<p>
+										Mauris ut condimentum massa. Curabitur odio dui, semper id justo eu, tempor
+										cursus libero. Donec iaculis, tellus non efficitur ullamcorper.
+									</p>
+								</div>
+								<a href="/" class="cta-go">{@html Link}</a>
+							</div>
+						</div>
+						<img src="https://nextweb.fi/_nuxt/portfolio_getsport_io.8b5ca986.webp" alt="" />
+					</div>
+					<div class="project-card">
+						<div class="content">
+							<div class="heading">
+								<div class="text">
+									<h3>Duis mauris.</h3>
+									<p>
+										Mauris ut condimentum massa. Curabitur odio dui, semper id justo eu, tempor
+										cursus libero. Donec iaculis, tellus non efficitur ullamcorper.
+									</p>
+								</div>
+								<a href="/" class="cta-go">{@html Link}</a>
+							</div>
+						</div>
+						<img src="https://nextweb.fi/_nuxt/portfolio_getsport_io.8b5ca986.webp" alt="" />
+					</div>
+				</div>
+				<div class="project-repo">
+					<div class="repo">
+						<div class="label">
+							<h5>Project Name</h5>
+							<div class="stack">
+								<small>Laravel</small>
+								<small>Wordpress</small>
+								<small>Vue</small>
+							</div>
+						</div>
+						<div class="cta-btns">
+							<div class="cta-github">
+								{@html Github}
+							</div>
+							<div class="cta-link2">
+								{@html Link2}
+							</div>
+						</div>
+					</div>
+					<div class="repo">
+						<div class="label">
+							<h5>Project Name</h5>
+							<div class="stack">
+								<small>Laravel</small>
+								<small>Wordpress</small>
+								<small>Vue</small>
+							</div>
+						</div>
+						<div class="cta-btns">
+							<div class="cta-github">
+								{@html Github}
+							</div>
+							<div class="cta-link2">
+								{@html Link2}
+							</div>
+						</div>
+					</div>
+					<div class="repo">
+						<div class="label">
+							<h5>Project Name</h5>
+							<div class="stack">
+								<small>Laravel</small>
+								<small>Wordpress</small>
+								<small>Vue</small>
+							</div>
+						</div>
+						<div class="cta-btns">
+							<div class="cta-github">
+								{@html Github}
+							</div>
+							<div class="cta-link2">
+								{@html Link2}
+							</div>
+						</div>
+					</div>
+					<div class="repo">
+						<div class="label">
+							<h5>Project Name</h5>
+							<div class="stack">
+								<small>Laravel</small>
+								<small>Wordpress</small>
+								<small>Vue</small>
+							</div>
+						</div>
+						<div class="cta-btns">
+							<div class="cta-github">
+								{@html Github}
+							</div>
+							<div class="cta-link2">
+								{@html Link2}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="collaborate">
+		<div class="wrapper">
+			<h1>Starting a new project or want to collaborate with me?</h1>
+			<div class="contact">
+				<div class="cta-btns">
+					<a href="" class="cta-talk">
+						<span>Let's talk</span>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="37"
+							height="18"
+							fill="none"
+							viewBox="0 0 17 8"
+						>
+							<path
+								fill="#1e312e"
+								d="M16.836 4.354a.5.5 0 0 0 0-.708L13.654.464a.5.5 0 1 0-.707.708L15.775 4l-2.828 2.828a.5.5 0 1 0 .707.708l3.182-3.182ZM.482 4.5h16v-1h-16v1Z"
+							/>
+						</svg>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -323,7 +465,7 @@
 		margin-top: 11em;
 	}
 
-	.content h1.heading {
+	.hero .content h1.heading {
 		font-family: 'Poppins', sans-serif;
 		font-style: normal;
 		font-weight: 500;
@@ -335,7 +477,7 @@
 		margin: 0;
 	}
 
-	.content p.subhead {
+	.hero .content p.subhead {
 		font-family: 'Poppins', sans-serif;
 		font-style: normal;
 		font-weight: 400;
@@ -346,14 +488,14 @@
 		max-width: 610px;
 	}
 
-	.cta-btns {
+	.hero .cta-btns {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		gap: 4em;
 	}
 
-	.cta-btns .primary-cta {
+	.hero .cta-btns .primary-cta {
 		text-decoration: none;
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
@@ -366,7 +508,7 @@
 		border-radius: 0.5em;
 	}
 
-	.cta-btns .secondary-cta {
+	.hero .cta-btns .secondary-cta {
 		text-decoration: none;
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
@@ -377,16 +519,16 @@
 		display: block;
 	}
 
-	.secondary-cta svg {
+	.hero .secondary-cta svg {
 		margin-left: 0.5em;
 		transition: transform 0.3s;
 	}
 
-	.secondary-cta:hover svg {
+	.hero .secondary-cta:hover svg {
 		transform: translateX(10px);
 	}
 
-	.hero-img {
+	.hero .hero-img {
 		width: 1200px;
 		padding: 4em;
 	}
@@ -714,7 +856,7 @@
 	}
 
 	section.showcase {
-		padding: 15em 0;
+		padding: 10em 0;
 		background-color: #fffcf1;
 	}
 
@@ -742,18 +884,21 @@
 	.showcase .project-wrapper {
 		display: flex;
 		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 8em;
+		margin-top: 6em;
 	}
 
 	.showcase .project-grid {
 		display: grid;
 		gap: 2.5em;
-		grid-template-columns: 66rem 60rem;
-		grid-template-rows: 64rem;
+		grid-template-columns: 56rem 50rem;
+		grid-template-rows: 50rem;
 	}
 
 	.showcase .project-grid .project-card {
-		background-color: red;
-		height: 64rem;
+		height: 50rem;
 		border-radius: 30px;
 		box-shadow: 4px 8px 4px 0px #0000001a;
 		position: relative;
@@ -767,9 +912,12 @@
 		top: 0;
 		left: 0;
 		user-select: none;
+		transform-origin: 0 0;
+		transition: transform 0.5s ease;
 	}
 
 	.showcase .project-grid .project-card .content {
+		background: linear-gradient(180deg, rgba(15, 27, 30, 0.65) 33.33%, rgba(20, 45, 33, 0) 100%);
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -814,32 +962,134 @@
 		width: 64px;
 		height: 64px;
 		padding: 20px;
+		opacity: 0;
+		margin-top: 20px;
+		transition: all 0.3s ease-in-out;
+	}
+
+	.showcase .project-grid .project-card .content .heading .cta-go:hover {
+		scale: 0.9;
+	}
+
+	.showcase .project-grid .project-card:hover img {
+		transform: scale(1.2);
+	}
+
+	.showcase .project-grid .project-card:hover .content .heading .cta-go {
+		margin-top: 0;
+		opacity: 1;
 	}
 
 	.showcase .project-grid .project-card:first-child {
 		grid-column: 1 / span 1;
 		grid-row: 1/2;
-		min-width: 66rem;
+		min-width: 56rem;
 	}
 
 	.showcase .project-grid .project-card:nth-child(2) {
 		grid-column: 2 / span 1;
 		grid-row: 1/2;
-		min-width: 60rem;
+		min-width: 50rem;
 	}
 
 	.showcase .project-grid .project-card:nth-child(3) {
 		grid-column: 1 / span 1;
 		grid-row: 2/3;
-		min-width: 60rem;
-		width: 60rem;
+		min-width: 50rem;
+		width: 50rem;
 	}
 
 	.showcase .project-grid .project-card:nth-child(4) {
 		grid-column: 2 / span 1;
 		grid-row: 2/3;
-		min-width: 66rem;
+		min-width: 56rem;
 		transform: translateX(-6rem);
+	}
+
+	.showcase .project-repo {
+		display: flex;
+		flex-direction: column;
+		gap: 2em;
+	}
+
+	.showcase .project-repo .repo {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 90em;
+		border-bottom: 1px solid #000000;
+		padding-left: 2em;
+		padding-right: 2em;
+		padding-bottom: 0.5em;
+	}
+
+	.showcase .project-repo .repo .label {
+		display: flex;
+		align-items: baseline;
+		gap: 3em;
+	}
+
+	.showcase .project-repo .repo .label h5 {
+		font-family: Rubik, sans-serif;
+		font-size: 2rem;
+		font-weight: 400;
+		line-height: 2.4rem;
+		color: #1e312e;
+		margin: 0;
+	}
+
+	.showcase .project-repo .repo .label .stack {
+		display: flex;
+		gap: 1em;
+	}
+
+	.showcase .project-repo .repo .label .stack small {
+		font-family: Rubik, sans-serif;
+		font-size: 1.5rem;
+		font-weight: 300;
+		line-height: 2.2rem;
+		color: #1e312e;
+	}
+
+	.showcase .project-repo .repo .cta-btns {
+		display: flex;
+		gap: 2em;
+	}
+
+	section.collaborate {
+		background: #1e312e;
+		padding: 8em 0;
+	}
+
+	.collaborate h1 {
+		font-family: Rubik, sans-serif;
+		font-size: 7.4rem;
+		font-weight: 300;
+		line-height: 10.3rem;
+		color: white;
+		margin: 0;
+		max-width: 15em;
+	}
+
+	.collaborate .contact .cta-btns .cta-talk {
+		text-decoration: none;
+		font-family: Rubik, sans-serif;
+		font-size: 3.5rem;
+		font-weight: 300;
+		line-height: 3.8rem;
+		color: #1e312e;
+		background-color: #15dcae;
+		border-radius: 50px;
+		padding: 0.5em 1.2em;
+	}
+
+	.collaborate .contact .cta-btns .cta-talk > svg {
+		margin-left: 0.2em;
+		transition: transform 0.3s;
+	}
+
+	.collaborate .contact .cta-btns .cta-talk:hover > svg {
+		transform: translateX(10px);
 	}
 
 	@media only screen and (min-width: 680px) {
