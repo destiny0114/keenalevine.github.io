@@ -6,22 +6,22 @@
 	import Accordion from '$lib/components/Accordion.svelte';
 	import AccordionItem from '$lib/components/AccordionItem.svelte';
 
-	import MockUp from '$lib/images/mockup.png';
-	import Profile from '$lib/images/profile.png';
-
-	import Subtract from '$lib/assets/subtract.svg?raw';
-	import Square from '$lib/assets/square.svg?raw';
-	import Plus from '$lib/assets/plus.svg?raw';
-	import PS from '$lib/assets/ps.svg?raw';
-	import AI from '$lib/assets/ai.svg?raw';
-	import XD from '$lib/assets/xd.svg?raw';
-	import Figma from '$lib/assets/figma.svg?raw';
-	import Wordpress from '$lib/assets/wordpress.svg?raw';
-	import Webflow from '$lib/assets/webflow.svg?raw';
-	import Wix from '$lib/assets/wix.svg?raw';
-	import Link from '$lib/assets/link.svg?raw';
-	import Link2 from '$lib/assets/red_link.svg?raw';
-	import Github from '$lib/assets/black_github_icon.svg?raw';
+	import Arrow from '$lib/icons/Arrow.svelte';
+	import Subtract from '$lib/icons/Subtract.svelte';
+	import Square from '$lib/icons/Square.svelte';
+	import Plus from '$lib/icons/Plus.svelte';
+	import PS from '$lib/icons/PS.svelte';
+	import AI from '$lib/icons/AI.svelte';
+	import XD from '$lib/icons/XD.svelte';
+	import Figma from '$lib/icons/Figma.svelte';
+	import Wordpress from '$lib/icons/Wordpress.svelte';
+	import Webflow from '$lib/icons/Webflow.svelte';
+	import Wix from '$lib/icons/Wix.svelte';
+	import Redirect from '$lib/icons/Redirect.svelte';
+	import Github from '$lib/icons/Github.svelte';
+	import Download from '$lib/icons/Download.svelte';
+	import Gmail from '$lib/icons/Gmail.svelte';
+	import Twitter from '$lib/icons/Twitter.svelte';
 
 	import { AccordionStore } from '$lib/stores/AccordionStore';
 
@@ -79,63 +79,52 @@
 					<a href="" class="primary-cta">My Work</a>
 					<a href="" class="secondary-cta">
 						<span>Download Resume</span>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="17"
-							height="8"
-							fill="none"
-							viewBox="0 0 17 8"
-						>
-							<path
-								fill="#FFEA7B"
-								d="M16.836 4.354a.5.5 0 0 0 0-.708L13.654.464a.5.5 0 1 0-.707.708L15.775 4l-2.828 2.828a.5.5 0 1 0 .707.708l3.182-3.182ZM.482 4.5h16v-1h-16v1Z"
-							/>
-						</svg>
+						<Arrow class="arrow-icon" />
 					</a>
 				</div>
 
-				<img class="hero-img" src={MockUp} alt="hero_image" />
+				<img class="hero-img" src="/images/mockup.png" alt="hero_image" />
 			</div>
 		</div>
 	</section>
 	<section class="marquee" bind:this={marquee}>
 		<ul class="marquee-list">
 			<li class="marquee-elem marquee-icon">
-				{@html Subtract}
+				<Subtract />
 			</li>
 			<li class="marquee-elem marquee-text">Design</li>
 			<li class="marquee-elem marquee-icon">
-				{@html Subtract}
+				<Subtract />
 			</li>
 			<li class="marquee-elem marquee-text">Development</li>
 			<li class="marquee-elem marquee-icon">
-				{@html Subtract}
+				<Subtract />
 			</li>
 
 			<li class="marquee-elem marquee-text">Website</li>
 			<li class="marquee-elem marquee-icon">
-				{@html Subtract}
+				<Subtract />
 			</li>
 
 			<li class="marquee-elem marquee-text">E-commerce</li>
 			<li class="marquee-elem marquee-icon">
-				{@html Subtract}
+				<Subtract />
 			</li>
 			<li class="marquee-elem marquee-text">UI/UX</li>
 			<li class="marquee-elem marquee-icon">
-				{@html Subtract}
+				<Subtract />
 			</li>
 			<li class="marquee-elem marquee-text">Wordpress</li>
 			<li class="marquee-elem marquee-icon">
-				{@html Subtract}
+				<Subtract />
 			</li>
 			<li class="marquee-elem marquee-text">Webflow</li>
 			<li class="marquee-elem marquee-icon">
-				{@html Subtract}
+				<Subtract />
 			</li>
 			<li class="marquee-elem marquee-text">Wix</li>
 			<li class="marquee-elem marquee-icon">
-				{@html Subtract}
+				<Subtract />
 			</li>
 			<li class="marquee-elem marquee-text">Web Hosting</li>
 		</ul>
@@ -190,20 +179,20 @@
 	<section class="about">
 		<div class="wrapper">
 			<div class="art plus-1">
-				{@html Plus}
+				<Plus />
 			</div>
 			<div class="art plus-2">
-				{@html Plus}
+				<Plus />
 			</div>
 			<div class="art plus-3">
-				{@html Plus}
+				<Plus />
 			</div>
 			<div class="square">
-				{@html Square}
+				<Square />
 			</div>
 			<div class="hire">
 				<div class="left-col">
-					<img src={Profile} alt="profile" class="profile-img" />
+					<img src="/images/profile.png" alt="profile" class="profile-img" />
 				</div>
 				<div class="right-col">
 					<h5>About me</h5>
@@ -236,25 +225,25 @@
 					<h3 class="title">My way of getting <span class="highlight">things done</span></h3>
 					<div class="skillset">
 						<div class="icon">
-							{@html PS}
+							<PS />
 						</div>
 						<div class="icon">
-							{@html AI}
+							<AI />
 						</div>
 						<div class="icon">
-							{@html XD}
+							<XD />
 						</div>
 						<div class="icon">
-							{@html Figma}
+							<Figma />
 						</div>
 						<div class="icon">
-							{@html Wordpress}
+							<Wordpress />
 						</div>
 						<div class="icon">
-							{@html Webflow}
+							<Webflow />
 						</div>
 						<div class="icon">
-							{@html Wix}
+							<Wix />
 						</div>
 					</div>
 				</div>
@@ -297,7 +286,7 @@
 										cursus libero. Donec iaculis, tellus non efficitur ullamcorper.
 									</p>
 								</div>
-								<a href="/" class="cta-go">{@html Link}</a>
+								<a href="/" class="cta-go"><Redirect /></a>
 							</div>
 						</div>
 						<img src="https://nextweb.fi/_nuxt/portfolio_getsport_io.8b5ca986.webp" alt="" />
@@ -312,7 +301,7 @@
 										cursus libero. Donec iaculis, tellus non efficitur ullamcorper.
 									</p>
 								</div>
-								<a href="/" class="cta-go">{@html Link}</a>
+								<a href="/" class="cta-go"><Redirect /></a>
 							</div>
 						</div>
 						<img src="https://nextweb.fi/_nuxt/portfolio_getsport_io.8b5ca986.webp" alt="" />
@@ -327,7 +316,7 @@
 										cursus libero. Donec iaculis, tellus non efficitur ullamcorper.
 									</p>
 								</div>
-								<a href="/" class="cta-go">{@html Link}</a>
+								<a href="/" class="cta-go"><Redirect /></a>
 							</div>
 						</div>
 						<img src="https://nextweb.fi/_nuxt/portfolio_getsport_io.8b5ca986.webp" alt="" />
@@ -342,7 +331,7 @@
 										cursus libero. Donec iaculis, tellus non efficitur ullamcorper.
 									</p>
 								</div>
-								<a href="/" class="cta-go">{@html Link}</a>
+								<a href="/" class="cta-go"><Redirect /></a>
 							</div>
 						</div>
 						<img src="https://nextweb.fi/_nuxt/portfolio_getsport_io.8b5ca986.webp" alt="" />
@@ -360,64 +349,10 @@
 						</div>
 						<div class="cta-btns">
 							<div class="cta-github">
-								{@html Github}
+								<Github fill="black" />
 							</div>
 							<div class="cta-link2">
-								{@html Link2}
-							</div>
-						</div>
-					</div>
-					<div class="repo">
-						<div class="label">
-							<h5>Project Name</h5>
-							<div class="stack">
-								<small>Laravel</small>
-								<small>Wordpress</small>
-								<small>Vue</small>
-							</div>
-						</div>
-						<div class="cta-btns">
-							<div class="cta-github">
-								{@html Github}
-							</div>
-							<div class="cta-link2">
-								{@html Link2}
-							</div>
-						</div>
-					</div>
-					<div class="repo">
-						<div class="label">
-							<h5>Project Name</h5>
-							<div class="stack">
-								<small>Laravel</small>
-								<small>Wordpress</small>
-								<small>Vue</small>
-							</div>
-						</div>
-						<div class="cta-btns">
-							<div class="cta-github">
-								{@html Github}
-							</div>
-							<div class="cta-link2">
-								{@html Link2}
-							</div>
-						</div>
-					</div>
-					<div class="repo">
-						<div class="label">
-							<h5>Project Name</h5>
-							<div class="stack">
-								<small>Laravel</small>
-								<small>Wordpress</small>
-								<small>Vue</small>
-							</div>
-						</div>
-						<div class="cta-btns">
-							<div class="cta-github">
-								{@html Github}
-							</div>
-							<div class="cta-link2">
-								{@html Link2}
+								<Redirect fill="black" />
 							</div>
 						</div>
 					</div>
@@ -432,19 +367,20 @@
 				<div class="cta-btns">
 					<a href="" class="cta-talk">
 						<span>Let's talk</span>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="37"
-							height="18"
-							fill="none"
-							viewBox="0 0 17 8"
-						>
-							<path
-								fill="#1e312e"
-								d="M16.836 4.354a.5.5 0 0 0 0-.708L13.654.464a.5.5 0 1 0-.707.708L15.775 4l-2.828 2.828a.5.5 0 1 0 .707.708l3.182-3.182ZM.482 4.5h16v-1h-16v1Z"
-							/>
-						</svg>
+						<Arrow class="arrow-icon" width="37" height="18" fill="#1e312e" />
 					</a>
+					<a href="" class="cta-resume">
+						<span>Download Resume</span>
+						<Download />
+					</a>
+				</div>
+				<div class="social">
+					<h5>keenalevine97@gmail.com</h5>
+					<div class="media">
+						<a href="#"><Github /></a>
+						<a href="#"><Twitter /></a>
+						<a href="#"><Gmail /></a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -519,12 +455,11 @@
 		display: block;
 	}
 
-	.hero .secondary-cta svg {
-		margin-left: 0.5em;
+	.hero .secondary-cta :global(.arrow-icon) {
 		transition: transform 0.3s;
 	}
 
-	.hero .secondary-cta:hover svg {
+	.hero .secondary-cta:hover :global(.arrow-icon) {
 		transform: translateX(10px);
 	}
 
@@ -1053,6 +988,7 @@
 
 	.showcase .project-repo .repo .cta-btns {
 		display: flex;
+		align-items: center;
 		gap: 2em;
 	}
 
@@ -1071,6 +1007,12 @@
 		max-width: 15em;
 	}
 
+	.collaborate .contact .cta-btns {
+		display: flex;
+		align-items: center;
+		gap: 5em;
+	}
+
 	.collaborate .contact .cta-btns .cta-talk {
 		text-decoration: none;
 		font-family: Rubik, sans-serif;
@@ -1083,13 +1025,27 @@
 		padding: 0.5em 1.2em;
 	}
 
-	.collaborate .contact .cta-btns .cta-talk > svg {
-		margin-left: 0.2em;
+	.collaborate .contact .cta-btns .cta-talk > :global(.arrow-icon) {
 		transition: transform 0.3s;
 	}
 
-	.collaborate .contact .cta-btns .cta-talk:hover > svg {
+	.collaborate .contact .cta-btns .cta-talk:hover > :global(.arrow-icon) {
 		transform: translateX(10px);
+	}
+
+	.collaborate .contact .cta-btns .cta-resume {
+		text-decoration: none;
+		font-family: Rubik, sans-serif;
+		font-size: 1.5rem;
+		font-weight: 400;
+		line-height: 1.8rem;
+		color: white;
+		display: flex;
+		align-items: center;
+	}
+
+	.collaborate .contact .cta-btns .cta-resume svg {
+		margin-left: 2em;
 	}
 
 	@media only screen and (min-width: 680px) {
