@@ -5,23 +5,25 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Accordion from '$lib/components/Accordion.svelte';
 	import AccordionItem from '$lib/components/AccordionItem.svelte';
-
-	import Arrow from '$lib/icons/Arrow.svelte';
-	import Subtract from '$lib/icons/Subtract.svelte';
-	import Square from '$lib/icons/Square.svelte';
-	import Plus from '$lib/icons/Plus.svelte';
-	import PS from '$lib/icons/PS.svelte';
-	import AI from '$lib/icons/AI.svelte';
-	import XD from '$lib/icons/XD.svelte';
-	import Figma from '$lib/icons/Figma.svelte';
-	import Wordpress from '$lib/icons/Wordpress.svelte';
-	import Webflow from '$lib/icons/Webflow.svelte';
-	import Wix from '$lib/icons/Wix.svelte';
-	import Redirect from '$lib/icons/Redirect.svelte';
-	import Github from '$lib/icons/Github.svelte';
-	import Download from '$lib/icons/Download.svelte';
-	import Gmail from '$lib/icons/Gmail.svelte';
-	import Twitter from '$lib/icons/Twitter.svelte';
+	import {
+		Arrow,
+		Subtract,
+		Square,
+		Plus,
+		PS,
+		AI,
+		XD,
+		Figma,
+		Wordpress,
+		Webflow,
+		Wix,
+		Redirect,
+		Github,
+		Download,
+		Gmail,
+		Twitter,
+		Arrowup
+	} from '$lib/icons';
 
 	import { AccordionStore } from '$lib/stores/AccordionStore';
 
@@ -383,6 +385,11 @@
 					</div>
 				</div>
 			</div>
+
+			<footer class="footer">
+				<h5>© Keena Levine 2022</h5>
+				<h5>Back to top <span><Arrowup /></span></h5>
+			</footer>
 		</div>
 	</section>
 </main>
@@ -994,7 +1001,8 @@
 
 	section.collaborate {
 		background: #1e312e;
-		padding: 8em 0;
+		padding-top: 8em;
+		padding-bottom: 2em;
 	}
 
 	.collaborate h1 {
@@ -1005,6 +1013,12 @@
 		color: white;
 		margin: 0;
 		max-width: 15em;
+	}
+
+	.collaborate .contact {
+		display: flex;
+		justify-content: space-between;
+		margin: 4em 0;
 	}
 
 	.collaborate .contact .cta-btns {
@@ -1044,8 +1058,39 @@
 		align-items: center;
 	}
 
-	.collaborate .contact .cta-btns .cta-resume svg {
-		margin-left: 2em;
+	.collaborate .contact .social {
+		display: flex;
+		align-items: center;
+		gap: 2em;
+	}
+
+	.collaborate .contact .social h5 {
+		font-family: Rubik, sans-serif;
+		font-size: 1.5rem;
+		font-weight: 400;
+		line-height: 1.8rem;
+		color: white;
+		margin: 0;
+	}
+
+	.collaborate footer {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.collaborate footer h5 {
+		font-family: Rubik, sans-serif;
+		font-size: 1.5rem;
+		font-weight: 400;
+		line-height: 1.8rem;
+		color: #87b6a1;
+		margin: 0;
+	}
+
+	.collaborate footer h5:nth-child(2) {
+		display: flex;
+		align-items: center;
+		gap: 1em;
 	}
 
 	@media only screen and (min-width: 680px) {
