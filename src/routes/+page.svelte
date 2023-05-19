@@ -33,6 +33,15 @@
 	};
 
 	onMount(() => {
+		const hashID = sessionStorage.getItem('hash');
+
+		if (hashID) {
+			document.querySelector(hashID).scrollIntoView({
+				behavior: 'smooth'
+			});
+			sessionStorage.removeItem('hash');
+		}
+
 		const resizeMarquee = () => {
 			const marqueeList = marquee.firstChild;
 			const cloneMarqueeList = marqueeList.cloneNode(true);
@@ -178,7 +187,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="about">
+	<section class="about" id="about">
 		<div class="wrapper">
 			<div class="art plus-1">
 				<Plus />
@@ -379,9 +388,9 @@
 				<div class="social">
 					<h5>keenalevine97@gmail.com</h5>
 					<div class="media">
-						<a href="#"><Github /></a>
-						<a href="#"><Twitter /></a>
-						<a href="#"><Gmail /></a>
+						<a href="https://github.com/destiny0114"><Github /></a>
+						<a href="https://twitter.com/home"><Twitter /></a>
+						<a href="mailto:keenelevine97@gmail.com"><Gmail /></a>
 					</div>
 				</div>
 			</div>
