@@ -34,10 +34,15 @@
 </div>
 
 <style>
+	.accordion-item {
+		opacity: 0;
+		transform: translateY(100px);
+	}
+
 	.accordion-item .label {
 		font-family: 'Rubik', sans-serif;
 		font-weight: 400;
-		font-size: 2.4rem;
+		font-size: 1.6rem;
 		line-height: 145%;
 		color: #ffffff;
 		margin: 0;
@@ -63,7 +68,8 @@
 	}
 
 	.label .icon {
-		height: 1.4em;
+		height: 1.8em;
+		min-width: 3rem;
 	}
 
 	.accordion-item .content {
@@ -95,5 +101,36 @@
 
 	.accordion-item .content.active .description {
 		opacity: 1;
+	}
+
+	@media only screen and (min-width: 1440px) {
+		.accordion-item .label {
+			font-size: 2.4rem;
+			line-height: 145%;
+		}
+
+		.label h4 {
+			display: flex;
+			align-items: center;
+			margin: 0;
+		}
+
+		.label .numeric {
+			color: #b2cfc5;
+			margin-right: 1em;
+		}
+
+		.label .icon {
+			height: 1.4em;
+		}
+
+		.accordion-item .content {
+			font-size: 1.5rem;
+			line-height: 145%;
+		}
+
+		.accordion-item .content .description {
+			padding: 1.8em 1.5em;
+		}
 	}
 </style>

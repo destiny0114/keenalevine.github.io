@@ -1,5 +1,5 @@
 <script>
-	import { gsap } from 'gsap';
+	import { gsap, ScrollTrigger, Bounce } from '$lib/helpers/gsap';
 	import { onMount } from 'svelte';
 
 	import Navbar from '$lib/components/Navbar.svelte';
@@ -42,7 +42,187 @@
 			sessionStorage.removeItem('hash');
 		}
 
-		const resizeMarquee = () => {
+		function initScrollAnimation() {
+			const tl = gsap.timeline();
+
+			tl.to('section.hero .content .heading', {
+				opacity: 1,
+				duration: 1,
+				ease: 'power3.inOut'
+			});
+			tl.to('section.hero .content .subhead', {
+				opacity: 1,
+				y: 0,
+				ease: 'power4.inOut'
+			});
+			tl.to('section.hero .cta-btns .primary-cta', {
+				opacity: 1,
+				x: 0,
+				ease: 'back.out'
+			});
+			tl.to('section.hero .cta-btns .secondary-cta', {
+				opacity: 1,
+				x: 0,
+				ease: 'back.out'
+			});
+
+			gsap
+				.timeline({
+					scrollTrigger: {
+						trigger: 'section.services',
+						start: 'top center',
+						end: 'bottom center',
+						toggleActions: 'play none none none'
+					}
+				})
+				.to('section.services .left-col h5', {
+					opacity: 1,
+					x: 0
+				})
+				.to('section.services .right-col .title span', {
+					y: 0,
+					duration: 1.7,
+					ease: 'power2'
+				})
+				.to(
+					'section.services .right-col .description > *',
+					{
+						opacity: 1,
+						stagger: 0.5
+					},
+					'-=0.75'
+				)
+				.to(
+					'section.services .right-col .process .card',
+					{
+						opacity: 1,
+						y: 0,
+						duration: 1.7,
+						ease: 'power2',
+						stagger: 0.5
+					},
+					'-=0.5'
+				);
+
+			gsap
+				.timeline({
+					scrollTrigger: {
+						trigger: 'section.about .hire',
+						start: 'top center',
+						end: 'bottom center',
+						toggleActions: 'play none none none'
+					}
+				})
+				.to('section.about .square svg', {
+					x: 0,
+					opacity: 1,
+					rotation: 180,
+					duration: 1
+				})
+				.to('section.about .hire img.profile-img', { opacity: 1 })
+				.to('section.about .hire h5', { x: 0, opacity: 1 })
+				.to('section.about .hire .title', { opacity: 1, ease: 'back.out' })
+				.to('section.about .hire .description', { opacity: 1, ease: 'back.out' })
+				.to(
+					'section.about .art svg',
+					{
+						opacity: 1,
+						y: -25,
+						duration: 2,
+						stagger: {
+							repeat: -1,
+							each: 0.4,
+							yoyo: true
+						},
+						ease: 'power2.easeOut'
+					},
+					'-=1'
+				);
+
+			gsap
+				.timeline({
+					scrollTrigger: {
+						trigger: 'section.about .expertise',
+						start: 'top center',
+						end: 'bottom center',
+						toggleActions: 'play none none none'
+					}
+				})
+				.to('section.about .expertise .info  > *', { x: 0, opacity: 1, stagger: 0.5 })
+				.to('section.about .expertise .title', {
+					opacity: 1,
+					ease: 'back.out'
+				})
+				.to('section.about .expertise .skillset', {
+					opacity: 1
+				})
+				.to('section.about .expertise .accordion > *', {
+					y: 0,
+					opacity: 1,
+					stagger: 0.5,
+					ease: 'power2.easeOut'
+				});
+
+			gsap
+				.timeline({
+					scrollTrigger: {
+						trigger: 'section.showcase',
+						start: 'top center',
+						end: 'bottom center',
+						toggleActions: 'play none none none'
+					}
+				})
+				.to('section.showcase .heading span.text', {
+					y: 0,
+					duration: 1.5,
+					stagger: 0.5,
+					ease: 'power2'
+				})
+				.to(
+					'section.showcase .project-grid .project-card',
+					{
+						scale: 1,
+						opacity: 1,
+						ease: 'power2',
+						stagger: 0.5
+					},
+					'-=1'
+				)
+				.to('section.showcase .project-repo .repo', {
+					y: 0,
+					opacity: 1,
+					ease: 'power2',
+					stagger: 0.5
+				});
+
+			gsap
+				.timeline({
+					scrollTrigger: {
+						trigger: 'section.collaborate',
+						start: 'top bottom',
+						end: 'bottom bottom',
+						toggleActions: 'play none none none'
+					}
+				})
+				.to('section.collaborate h1 span.text', {
+					y: 0,
+					duration: 1.5,
+					stagger: 0.5,
+					ease: 'power2'
+				})
+				.to('section.collaborate .contact .cta-btns > *', {
+					opacity: 1,
+					stagger: 0.5,
+					ease: 'power2'
+				})
+				.to('section.collaborate .contact .social > *', {
+					opacity: 1,
+					stagger: 0.5,
+					ease: 'power2'
+				});
+		}
+
+		function resizeMarquee() {
 			const marqueeList = marquee.firstChild;
 			const cloneMarqueeList = marqueeList.cloneNode(true);
 			marquee.append(cloneMarqueeList);
@@ -66,7 +246,9 @@
 					}
 				}
 			);
-		};
+		}
+
+		initScrollAnimation();
 
 		resizeMarquee();
 
@@ -146,7 +328,9 @@
 				<h5>Services</h5>
 			</div>
 			<div class="right-col">
-				<h3 class="title">I can <span class="highlight">help</span> you with ...</h3>
+				<h3 class="title">
+					<span class="text">I can <span class="highlight">help</span> you with ...</span>
+				</h3>
 				<div class="description">
 					<p>
 						I specialise in offering bespoke web design and web development services to small and
@@ -259,12 +443,15 @@
 					</div>
 				</div>
 				<div class="right-col">
-					<h5>Expertise</h5>
-					<p>
-						I specialise in offering bespoke web design and web development services to small and
-						big businesses alike. My aim is to help businesses establish a strong online presence
-						and connect with their target audience effectively.
-					</p>
+					<div class="info">
+						<h5>Expertise</h5>
+						<p>
+							I specialise in offering bespoke web design and web development services to small and
+							big businesses alike. My aim is to help businesses establish a strong online presence
+							and connect with their target audience effectively.
+						</p>
+					</div>
+
 					<Accordion bind:current={accordionState.current}>
 						{#each $AccordionStore as AccordionMenu, index}
 							<AccordionItem key={index}>
@@ -282,8 +469,8 @@
 	<section class="showcase">
 		<div class="wrapper">
 			<div class="heading">
-				<h5>Exploration</h5>
-				<h1>Featured Projects</h1>
+				<h5><span class="text">Exploration</span></h5>
+				<h1><span class="text">Featured Projects</span></h1>
 			</div>
 			<div class="project-wrapper">
 				<div class="project-grid">
@@ -373,7 +560,7 @@
 	</section>
 	<section class="collaborate">
 		<div class="wrapper">
-			<h1>Starting a new project or want to collaborate with me?</h1>
+			<h1><span class="text">Starting a new project or want to collaborate with me?</span></h1>
 			<div class="contact">
 				<div class="cta-btns">
 					<a href="" class="cta-talk">
@@ -405,6 +592,7 @@
 
 <style>
 	section.hero {
+		overflow: hidden;
 		background: linear-gradient(107.47deg, #304b41 -19.31%, #0c181c 109.3%);
 	}
 
@@ -414,37 +602,39 @@
 		justify-content: space-between;
 		align-items: center;
 		gap: 4em;
-		margin-top: 11em;
+		margin-top: 2em;
 	}
 
 	.hero .content h1.heading {
 		font-family: 'Poppins', sans-serif;
 		font-style: normal;
 		font-weight: 500;
-		font-size: 6.4rem;
+		font-size: 2.5rem;
 		line-height: 120%;
 		text-align: center;
 		color: #ffffff;
-		max-width: 970px;
 		margin: 0;
+		opacity: 0;
 	}
 
 	.hero .content p.subhead {
 		font-family: 'Poppins', sans-serif;
 		font-style: normal;
 		font-weight: 400;
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 		line-height: 150%;
 		text-align: center;
 		color: #d0e0e3;
-		max-width: 610px;
+		opacity: 0;
+		transform: translateY(50px);
 	}
 
 	.hero .cta-btns {
 		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
 		align-items: center;
-		gap: 4em;
+		gap: 2em;
 	}
 
 	.hero .cta-btns .primary-cta {
@@ -454,10 +644,12 @@
 		font-weight: 500;
 		font-size: 1.5rem;
 		line-height: 120%;
-		padding: 1em 2em;
+		padding: 0.8em 2em;
 		background-color: #15dcae;
 		color: #32524d;
 		border-radius: 0.5em;
+		opacity: 0;
+		transform: translateX(-100px);
 	}
 
 	.hero .cta-btns .secondary-cta {
@@ -468,7 +660,8 @@
 		font-size: 1.5rem;
 		line-height: 120%;
 		color: #ffea7b;
-		display: block;
+		transform: translateX(100px);
+		opacity: 0;
 	}
 
 	.hero .secondary-cta :global(.arrow-icon) {
@@ -480,8 +673,7 @@
 	}
 
 	.hero .hero-img {
-		width: 1200px;
-		padding: 4em;
+		width: 100%;
 	}
 
 	section.marquee {
@@ -518,22 +710,17 @@
 	section.services {
 		background: #29413a;
 		box-shadow: 0px -8px 25px rgba(0, 0, 0, 0.25);
-		padding: 15em 0;
+		padding: 2em 0;
+		overflow: hidden;
 	}
 
 	.services-content.wrapper {
 		display: flex;
+		flex-direction: column;
 	}
 
 	.services-content .left-col {
-		width: 20%;
-	}
-
-	.services-content .right-col {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		gap: 7em;
+		width: 100%;
 	}
 
 	.services-content .left-col h5 {
@@ -544,17 +731,32 @@
 		letter-spacing: 0.25em;
 		color: #85aeac;
 		text-transform: uppercase;
-		margin: 0;
+		margin-bottom: 3rem;
+		opacity: 0;
+		transform: translateX(-100px);
+	}
+
+	.services-content .right-col {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 4em;
 	}
 
 	.services-content .right-col .title {
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
 		font-weight: 400;
-		font-size: 6.4rem;
+		font-size: 3.4rem;
 		color: #b2cfc599;
-		line-height: 80%;
+		line-height: 120%;
 		margin: 0;
+		overflow: hidden;
+	}
+
+	.services-content .right-col .title .text {
+		display: block;
+		transform: translateY(100px);
 	}
 
 	.services-content .title .highlight {
@@ -563,33 +765,34 @@
 
 	.services-content .right-col .description {
 		display: flex;
+		flex-direction: column;
 		justify-content: flex-start;
 		align-items: center;
-		gap: 7em;
+		gap: 4em;
 	}
 
 	.services-content .description p {
-		max-width: 35%;
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
 		font-weight: 300;
-		font-size: 1.6rem;
+		font-size: 1.2rem;
 		line-height: 145%;
 		color: #d0e0e3;
+		opacity: 0;
 	}
 
 	.services-content .description .experience {
 		display: flex;
 		flex-direction: column;
 		justify-content: flex-start;
-		width: 10em;
+		opacity: 0;
 	}
 
 	.services-content .description .experience h5 {
 		font-family: 'Rubik', sans-serif;
 		font-size: 6.4rem;
 		font-weight: 400;
-		text-align: left;
+		text-align: center;
 		color: #b2cfc5;
 		margin: 0;
 	}
@@ -601,13 +804,14 @@
 		line-height: 1.7rem;
 		color: #7e8f8b;
 		margin: 0;
-		max-width: 5em;
+		align-self: center;
 	}
 
 	.services-content .right-col .process {
 		display: flex;
 		justify-content: flex-start;
 		align-items: stretch;
+		flex-direction: column;
 		gap: 4em;
 	}
 
@@ -615,16 +819,18 @@
 		display: flex;
 		flex-direction: column;
 		gap: 2em;
-		padding: 4em;
+		padding: 2.5em;
 		background: #264d49;
 		box-shadow: 10px 10px 50px rgba(35, 40, 46, 0.25);
+		opacity: 0;
+		transform: translateY(100px);
 	}
 
 	.process .card .numeric {
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
 		font-weight: 400;
-		font-size: 4.8rem;
+		font-size: 4rem;
 		color: #92a9a44d;
 	}
 
@@ -633,31 +839,38 @@
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
 		font-weight: 400;
-		line-height: 2.8rem;
 		color: #e6e0c6;
 		margin: 0;
 	}
 
 	.process .card h5 {
 		font-size: 2.4rem;
+		line-height: 2.8rem;
 	}
 
 	.process .card p {
-		font-size: 1.4rem;
-		max-width: 15em;
+		font-size: 1.2rem;
+		line-height: 2rem;
 	}
 
 	section.about {
 		background: #1e312e;
-		padding: 15em 0;
 		position: relative;
+		padding: 2em 0;
+		overflow: hidden;
 	}
 
 	.about .square {
 		position: absolute;
-		width: 85em;
-		left: -3em;
-		top: 6em;
+		width: auto;
+		left: 9em;
+		top: 8em;
+		transform: scale(1.5);
+	}
+
+	.about .square :global(svg) {
+		opacity: 0;
+		transform: translateX(-300px);
 	}
 
 	.about .art {
@@ -665,23 +878,28 @@
 		z-index: 15;
 	}
 
+	.about .art :global(svg) {
+		opacity: 0;
+	}
+
 	.about .plus-1 {
-		left: 8em;
-		top: 96em;
+		left: 4em;
+		top: 6em;
 	}
 
 	.about .plus-2 {
-		left: 30em;
+		right: 4em;
+		top: 15em;
 	}
 
 	.about .plus-3 {
 		right: 60%;
-		top: 80em;
+		top: 35em;
 	}
 
 	.about .hire {
 		display: flex;
-		margin-bottom: 17em;
+		flex-direction: column;
 	}
 
 	.hire .left-col {
@@ -691,16 +909,17 @@
 
 	.hire .left-col .profile-img {
 		position: absolute;
-		min-width: 60em;
-		bottom: -8em;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 30em;
 		z-index: 5;
+		opacity: 0;
 	}
 
 	.hire .right-col {
-		max-width: 75em;
 		display: flex;
 		flex-direction: column;
-		gap: 3em;
+		margin-top: 40em;
 	}
 
 	.hire .right-col h5 {
@@ -711,17 +930,19 @@
 		letter-spacing: 0.25em;
 		color: #b2cfc5;
 		text-transform: uppercase;
-		margin: 0;
+		opacity: 0;
+		transform: translateX(100px);
 	}
 
 	.hire .right-col .title {
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
 		font-weight: 400;
-		font-size: 7.4rem;
+		font-size: 4.4rem;
 		color: #b2cfc5;
-		line-height: 7.6rem;
+		line-height: 4.6rem;
 		margin: 0;
+		opacity: 0;
 	}
 
 	.hire .title .highlight {
@@ -731,6 +952,7 @@
 	.hire .description {
 		display: flex;
 		flex-direction: column;
+		opacity: 0;
 	}
 
 	.hire .description p {
@@ -742,47 +964,56 @@
 		color: white;
 	}
 
-	.about .expertise {
-		display: flex;
-		flex-direction: row;
-		gap: 10em;
-		margin-top: 35em;
-	}
-
-	.expertise .left-col {
-		max-width: 50%;
-	}
-
 	.expertise .left-col .title {
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
 		font-weight: 400;
-		font-size: 7.4rem;
+		font-size: 4.4rem;
 		color: #b2cfc5;
-		line-height: 7.6rem;
+		line-height: 5.6rem;
 		margin: 0;
-	}
-
-	.expertise .left-col .skillset {
-		margin-top: 10em;
-		display: grid;
-		grid-template-columns: repeat(4, min-content);
-		gap: 3em;
-	}
-
-	.expertise .left-col .skillset .icon {
-		box-shadow: 0px 4px 40px 0px #09090c1a;
+		opacity: 0;
 	}
 
 	.expertise .title .highlight {
 		color: #fff7ac;
 	}
 
+	.expertise .left-col .skillset {
+		display: grid;
+		grid-template-columns: repeat(8, min-content);
+		gap: 1em;
+		justify-content: space-evenly;
+		margin: 2em 0;
+		opacity: 0;
+	}
+
+	.expertise .left-col .skillset .icon {
+		grid-column: span 2;
+		box-shadow: 0px 4px 40px 0px #09090c1a;
+	}
+
+	.expertise .left-col .skillset .icon:nth-last-child(3) {
+		grid-column-end: 4;
+	}
+
+	.expertise .left-col .skillset .icon:nth-last-child(2) {
+		grid-column-end: 6;
+	}
+
+	.expertise .left-col .skillset .icon:last-child {
+		grid-column-end: 8;
+	}
+
 	.expertise .right-col {
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		gap: 3em;
+		gap: 1.5em;
+	}
+	.expertise .right-col .info > * {
+		opacity: 0;
+		transform: translateX(100px);
 	}
 
 	.expertise .right-col h5 {
@@ -801,14 +1032,15 @@
 		font-family: 'Rubik', sans-serif;
 		font-style: normal;
 		font-weight: 400;
-		font-size: 1.6rem;
+		font-size: 1.3rem;
 		line-height: 145%;
 		color: #d0e0e3;
 	}
 
 	section.showcase {
-		padding: 10em 0;
+		padding: 2em 0;
 		background-color: #fffcf1;
+		overflow: hidden;
 	}
 
 	.showcase .heading h5 {
@@ -819,17 +1051,24 @@
 		letter-spacing: 0.25em;
 		color: #1e312e;
 		text-transform: uppercase;
+		overflow: hidden;
 	}
 
 	.showcase .heading h1 {
-		font-family: Rubik;
-		font-size: 9.6rem;
+		font-family: 'Rubik', sans-serif;
+		font-size: 4.6rem;
 		font-weight: 700;
 		text-align: left;
 		margin: 0;
 		margin-left: -5px;
 		color: #1e312e;
 		text-transform: uppercase;
+		overflow: hidden;
+	}
+
+	.showcase .heading span {
+		display: block;
+		transform: translateY(100px);
 	}
 
 	.showcase .project-wrapper {
@@ -844,16 +1083,18 @@
 	.showcase .project-grid {
 		display: grid;
 		gap: 2.5em;
-		grid-template-columns: 56rem 50rem;
-		grid-template-rows: 50rem;
+		grid-template-columns: 25rem;
+		grid-template-rows: 25rem;
 	}
 
 	.showcase .project-grid .project-card {
-		height: 50rem;
-		border-radius: 30px;
+		height: 25rem;
+		border-radius: 15px;
 		box-shadow: 4px 8px 4px 0px #0000001a;
 		position: relative;
 		overflow: hidden;
+		opacity: 0;
+		transform: scale(2);
 	}
 
 	.showcase .project-grid .project-card img {
@@ -873,7 +1114,7 @@
 		width: 100%;
 		height: 100%;
 		z-index: 1;
-		padding: 5em;
+		padding: 2.5em 2em;
 	}
 
 	.showcase .project-grid .project-card .content .heading {
@@ -883,22 +1124,24 @@
 
 	.showcase .project-grid .project-card .content .heading .text {
 		max-width: 70%;
+		margin-top: 10px;
 	}
 
 	.showcase .project-grid .project-card .content .heading .text h3 {
 		font-family: Rubik, sans-serif;
-		font-size: 4rem;
+		font-size: 2.5rem;
 		font-weight: 500;
-		line-height: 4.7rem;
+		line-height: 2.7rem;
 		color: white;
 		margin: 0;
+		word-wrap: break-word;
 	}
 
 	.showcase .project-grid .project-card .content .heading .text p {
 		font-family: Rubik, sans-serif;
-		font-size: 1.4rem;
+		font-size: 1.3rem;
 		font-weight: 400;
-		line-height: 2rem;
+		line-height: 1.5rem;
 		color: white;
 	}
 
@@ -910,68 +1153,30 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: center;
-		width: 64px;
-		height: 64px;
-		padding: 20px;
-		opacity: 0;
-		margin-top: 20px;
-		transition: all 0.3s ease-in-out;
-	}
-
-	.showcase .project-grid .project-card .content .heading .cta-go:hover {
-		scale: 0.9;
-	}
-
-	.showcase .project-grid .project-card:hover img {
-		transform: scale(1.2);
-	}
-
-	.showcase .project-grid .project-card:hover .content .heading .cta-go {
-		margin-top: 0;
-		opacity: 1;
-	}
-
-	.showcase .project-grid .project-card:first-child {
-		grid-column: 1 / span 1;
-		grid-row: 1/2;
-		min-width: 56rem;
-	}
-
-	.showcase .project-grid .project-card:nth-child(2) {
-		grid-column: 2 / span 1;
-		grid-row: 1/2;
-		min-width: 50rem;
-	}
-
-	.showcase .project-grid .project-card:nth-child(3) {
-		grid-column: 1 / span 1;
-		grid-row: 2/3;
-		min-width: 50rem;
-		width: 50rem;
-	}
-
-	.showcase .project-grid .project-card:nth-child(4) {
-		grid-column: 2 / span 1;
-		grid-row: 2/3;
-		min-width: 56rem;
-		transform: translateX(-6rem);
+		width: 44px;
+		height: 44px;
+		padding: 10px;
 	}
 
 	.showcase .project-repo {
 		display: flex;
 		flex-direction: column;
 		gap: 2em;
+		width: 100%;
+		align-items: center;
 	}
 
 	.showcase .project-repo .repo {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		width: 90em;
+		width: 100%;
 		border-bottom: 1px solid #000000;
-		padding-left: 2em;
-		padding-right: 2em;
+		padding-left: 0;
+		padding-right: 0;
 		padding-bottom: 0.5em;
+		opacity: 0;
+		transform: translateY(100px);
 	}
 
 	.showcase .project-repo .repo .label {
@@ -982,7 +1187,7 @@
 
 	.showcase .project-repo .repo .label h5 {
 		font-family: Rubik, sans-serif;
-		font-size: 2rem;
+		font-size: 1.3rem;
 		font-weight: 400;
 		line-height: 2.4rem;
 		color: #1e312e;
@@ -990,8 +1195,7 @@
 	}
 
 	.showcase .project-repo .repo .label .stack {
-		display: flex;
-		gap: 1em;
+		display: none;
 	}
 
 	.showcase .project-repo .repo .label .stack small {
@@ -1005,43 +1209,57 @@
 	.showcase .project-repo .repo .cta-btns {
 		display: flex;
 		align-items: center;
-		gap: 2em;
+		gap: 1em;
 	}
 
 	section.collaborate {
 		background: #1e312e;
 		padding-top: 8em;
 		padding-bottom: 2em;
+		overflow: hidden;
 	}
 
 	.collaborate h1 {
 		font-family: Rubik, sans-serif;
-		font-size: 7.4rem;
+		font-size: 3.4rem;
 		font-weight: 300;
-		line-height: 10.3rem;
+		line-height: 4.6rem;
 		color: white;
 		margin: 0;
 		max-width: 15em;
+		overflow: hidden;
+	}
+
+	.collaborate h1 span {
+		display: block;
+		transform: translateY(200px);
 	}
 
 	.collaborate .contact {
 		display: flex;
+		flex-direction: column;
 		justify-content: space-between;
-		margin: 4em 0;
+		margin: 2em 0;
+		gap: 2em;
 	}
 
 	.collaborate .contact .cta-btns {
 		display: flex;
+		justify-content: space-between;
 		align-items: center;
-		gap: 5em;
+		gap: 1em;
+	}
+
+	.collaborate .contact .cta-btns > * {
+		opacity: 0;
 	}
 
 	.collaborate .contact .cta-btns .cta-talk {
 		text-decoration: none;
 		font-family: Rubik, sans-serif;
-		font-size: 3.5rem;
+		font-size: 1.5rem;
 		font-weight: 300;
-		line-height: 3.8rem;
+		line-height: 1.8rem;
 		color: #1e312e;
 		background-color: #15dcae;
 		border-radius: 50px;
@@ -1049,11 +1267,9 @@
 	}
 
 	.collaborate .contact .cta-btns .cta-talk > :global(.arrow-icon) {
+		width: 20px;
+		height: 100%;
 		transition: transform 0.3s;
-	}
-
-	.collaborate .contact .cta-btns .cta-talk:hover > :global(.arrow-icon) {
-		transform: translateX(10px);
 	}
 
 	.collaborate .contact .cta-btns .cta-resume {
@@ -1067,10 +1283,20 @@
 		align-items: center;
 	}
 
+	.collaborate .contact .cta-btns .cta-resume span {
+		width: min-content;
+	}
+
 	.collaborate .contact .social {
 		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
 		align-items: center;
-		gap: 2em;
+		gap: 1em;
+	}
+
+	.collaborate .contact .social > * {
+		opacity: 1;
 	}
 
 	.collaborate .contact .social h5 {
@@ -1085,11 +1311,12 @@
 	.collaborate footer {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 	}
 
 	.collaborate footer h5 {
 		font-family: Rubik, sans-serif;
-		font-size: 1.5rem;
+		font-size: 1rem;
 		font-weight: 400;
 		line-height: 1.8rem;
 		color: #87b6a1;
@@ -1102,15 +1329,243 @@
 		gap: 1em;
 	}
 
-	@media only screen and (min-width: 680px) {
-		.hero-img {
-			width: 600px;
+	@media only screen and (max-width: 767px) {
+		.wrapper {
+			max-width: 767px;
+			margin: 0 35px;
 		}
 	}
 
-	@media only screen and (min-width: 920px) {
+	@media only screen and (min-width: 768px) {
+		.wrapper {
+			max-width: 768px;
+			margin: 0 auto;
+		}
+
+		.hero .content {
+			gap: 2em;
+		}
+		.hero .content p.subhead {
+			max-width: 44em;
+		}
+
 		.hero-img {
-			width: 900px;
+			min-width: 768px;
+			padding: 2em;
+		}
+
+		.hero .cta-btns {
+			flex-direction: row;
+			gap: 4em;
+		}
+
+		section.services {
+			padding: 2em;
+		}
+
+		.services-content .right-col {
+			gap: 7em;
+		}
+
+		.services-content .right-col .description {
+			flex-direction: row;
+			gap: 7em;
+		}
+
+		.services-content .right-col .title {
+			line-height: 80%;
+			font-size: 6.4rem;
+		}
+
+		.services-content .description .experience h5 {
+			text-align: left;
+		}
+
+		.services-content .description .experience small {
+			align-self: auto;
+			max-width: 5em;
+		}
+
+		.services-content .right-col .process {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		.services-content .process .card {
+			padding: 2em;
+			gap: 1em;
+		}
+
+		.process .card .numeric {
+			font-size: 3.8rem;
+		}
+
+		.process .card h5 {
+			font-size: 2.2rem;
+			line-height: 2.8rem;
+		}
+
+		.process .card p {
+			font-size: 1.2rem;
+			max-width: 15em;
+			line-height: 2.5rem;
+		}
+
+		section.about {
+			padding: 2em;
+		}
+
+		.about .square {
+			position: absolute;
+			width: auto;
+			left: 60%;
+			top: 18em;
+			transform: scale(2);
+		}
+
+		.about .art {
+			position: absolute;
+			z-index: 15;
+		}
+
+		.about .plus-1 {
+			left: 4em;
+			top: 6em;
+		}
+
+		.about .plus-2 {
+			right: 4em;
+			top: 15em;
+		}
+
+		.about .plus-3 {
+			right: 60%;
+			top: 35em;
+		}
+
+		.hire .left-col .profile-img {
+			position: absolute;
+			width: auto;
+			z-index: 5;
+			top: -8em;
+			left: 50%;
+			transform: translateX(-50%);
+			scale: (1);
+		}
+
+		.hire .right-col {
+			max-width: 75em;
+			gap: 3em;
+			margin-top: 60em;
+		}
+
+		.hire .right-col h5 {
+			margin: 0;
+		}
+
+		.hire .right-col .title {
+			font-size: 7.4rem;
+			line-height: 7.6rem;
+		}
+
+		section.showcase {
+			padding: 2em;
+		}
+
+		.showcase .heading h1 {
+			font-size: 6.6rem;
+		}
+
+		.showcase .project-grid {
+			gap: 2.5em;
+			grid-template-columns: repeat(2, 35em);
+			grid-template-rows: 35rem;
+		}
+
+		.showcase .project-grid .project-card {
+			height: 35rem;
+		}
+
+		.showcase .project-grid .project-card .content {
+			padding: 4em;
+		}
+
+		.showcase .project-grid .project-card .content .heading .text {
+			margin-top: 0;
+		}
+
+		.showcase .project-grid .project-card .content .heading .text h3 {
+			font-size: 3rem;
+			line-height: 3.7rem;
+		}
+
+		.showcase .project-grid .project-card .content .heading .text p {
+			font-size: 1.4rem;
+			line-height: 2rem;
+		}
+
+		.showcase .project-repo .repo {
+			padding-left: 2em;
+			padding-right: 2em;
+			padding-bottom: 0.5em;
+		}
+
+		.showcase .project-repo .repo .label h5 {
+			font-size: 2rem;
+		}
+
+		.showcase .project-repo .repo .label .stack {
+			display: flex;
+			gap: 1em;
+		}
+
+		section.collaborate {
+			padding: 2em;
+		}
+
+		.collaborate h1 {
+			font-size: 7.4rem;
+			line-height: 10.3rem;
+		}
+
+		.collaborate .contact {
+			flex-direction: row;
+			margin: 4em 0;
+			gap: unset;
+		}
+
+		.collaborate .contact .cta-btns {
+			gap: 2em;
+		}
+
+		.collaborate .contact .cta-btns .cta-talk {
+			font-size: 2.5rem;
+			line-height: 3.8rem;
+			padding: 0.5em 1.2em;
+		}
+
+		.collaborate .contact .cta-btns .cta-talk > :global(.arrow-icon) {
+			width: 1em;
+			transition: transform 0.3s;
+		}
+
+		.collaborate .contact .social {
+			flex-direction: row;
+			gap: 1em;
+		}
+
+		.collaborate .contact .cta-btns .cta-resume {
+			font-size: 1.5rem;
+			line-height: 1.8rem;
+		}
+
+		.collaborate .contact .cta-btns .cta-resume span {
+			width: auto;
+		}
+
+		.collaborate footer h5 {
+			font-size: 1.5rem;
+			line-height: 1.8rem;
 		}
 	}
 
@@ -1118,6 +1573,341 @@
 		.wrapper {
 			max-width: 1440px;
 			margin: 0 auto;
+		}
+
+		.hero .content {
+			margin-top: 11em;
+		}
+
+		.hero .content h1.heading {
+			font-size: 6.4rem;
+			max-width: 970px;
+		}
+
+		.hero .content p.subhead {
+			font-size: 1.5rem;
+			max-width: 610px;
+		}
+
+		.hero .cta-btns {
+			flex-direction: row;
+			gap: 4em;
+		}
+
+		.hero .cta-btns .primary-cta {
+			font-size: 1.5rem;
+			padding: 1em 2em;
+		}
+
+		.hero .hero-img {
+			width: 1200px;
+			padding: 4em;
+		}
+
+		section.services {
+			padding: 15em 0;
+		}
+
+		.services-content.wrapper {
+			flex-direction: row;
+		}
+
+		.services-content .left-col {
+			width: 20%;
+		}
+
+		.services-content .left-col h5 {
+			margin: 0;
+		}
+
+		.services-content .right-col {
+			gap: 7em;
+		}
+
+		.services-content .right-col .title {
+			line-height: 80%;
+			font-size: 6.4rem;
+		}
+
+		.services-content .description p {
+			max-width: 35%;
+			font-size: 1.6rem;
+		}
+
+		.services-content .right-col .description {
+			flex-direction: row;
+			gap: 7em;
+		}
+
+		.services-content .description .experience {
+			width: 10em;
+		}
+
+		.services-content .description .experience h5 {
+			text-align: left;
+		}
+
+		.services-content .description .experience small {
+			align-self: auto;
+			max-width: 5em;
+		}
+
+		.services-content .right-col .process {
+			flex-direction: row;
+			justify-content: flex-start;
+		}
+
+		.services-content .process .card {
+			padding: 4em;
+			gap: 2em;
+		}
+
+		.process .card .numeric {
+			font-size: 4.8rem;
+		}
+
+		.process .card h5 {
+			font-size: 2.4rem;
+			line-height: 2.8rem;
+		}
+
+		.process .card p {
+			font-size: 1.4rem;
+			max-width: 15em;
+			line-height: 2.8rem;
+		}
+
+		section.about {
+			padding: 15em 0;
+		}
+
+		.about .square {
+			position: absolute;
+			width: 85em;
+			left: -3em;
+			top: 6em;
+			transform: scale(1);
+		}
+
+		.about .art {
+			position: absolute;
+			z-index: 15;
+		}
+
+		.about .plus-1 {
+			left: 8em;
+			top: 96em;
+		}
+
+		.about .plus-2 {
+			left: 30em;
+		}
+
+		.about .plus-3 {
+			right: 60%;
+			top: 80em;
+		}
+
+		.about .hire {
+			flex-direction: row;
+			margin-bottom: 17em;
+		}
+
+		.hire .left-col {
+			flex: 1;
+			position: relative;
+		}
+
+		.hire .left-col .profile-img {
+			position: absolute;
+			min-width: 60em;
+			width: auto;
+			left: auto;
+			top: auto;
+			bottom: -10em;
+			z-index: 5;
+			transform: scale(1);
+		}
+
+		.hire .right-col {
+			max-width: 75em;
+			gap: 3em;
+			margin: 0;
+			z-index: 10;
+		}
+
+		.hire .right-col h5 {
+			margin: 0;
+		}
+
+		.hire .right-col .title {
+			font-size: 7.4rem;
+			line-height: 7.6rem;
+		}
+
+		.about .expertise {
+			display: flex;
+			flex-direction: row;
+			gap: 10em;
+			margin-top: 35em;
+		}
+
+		.expertise .left-col {
+			max-width: 50%;
+		}
+
+		.expertise .left-col .title {
+			font-size: 7.4rem;
+			line-height: 7.6rem;
+		}
+
+		.expertise .left-col .skillset {
+			margin-top: 8em;
+			grid-template-columns: repeat(4, min-content);
+			gap: 3em;
+			justify-content: left;
+		}
+
+		.expertise .left-col .skillset .icon {
+			grid-column: unset;
+		}
+
+		.expertise .left-col .skillset .icon:nth-last-child(3) {
+			grid-column-end: unset;
+		}
+
+		.expertise .left-col .skillset .icon:nth-last-child(2) {
+			grid-column-end: unset;
+		}
+
+		.expertise .left-col .skillset .icon:last-child {
+			grid-column-end: unset;
+		}
+
+		.expertise .right-col {
+			gap: 3em;
+		}
+
+		.expertise .right-col h5 {
+			font-size: 1.3rem;
+			letter-spacing: 0.25em;
+		}
+
+		.expertise .right-col p {
+			font-size: 1.6rem;
+			line-height: 145%;
+		}
+
+		section.showcase {
+			padding: 10em 0;
+		}
+
+		.showcase .heading h1 {
+			font-size: 9.6rem;
+		}
+
+		.showcase .project-grid {
+			gap: 2.5em;
+			grid-template-columns: 56rem 50rem;
+			grid-template-rows: 50rem;
+		}
+
+		.showcase .project-grid .project-card {
+			height: 50rem;
+		}
+
+		.showcase .project-grid .project-card .content {
+			padding: 5em;
+		}
+
+		.showcase .project-grid .project-card .content .heading .text {
+			margin-top: 0;
+		}
+
+		.showcase .project-grid .project-card .content .heading .text h3 {
+			font-size: 4rem;
+			line-height: 4.7rem;
+		}
+
+		.showcase .project-grid .project-card .content .heading .text p {
+			font-size: 1.4rem;
+			line-height: 2rem;
+		}
+
+		.showcase .project-grid .project-card .content .heading .cta-go {
+			width: 64px;
+			height: 64px;
+			padding: 20px;
+			opacity: 0;
+			margin-top: 20px;
+			transition: all 0.3s ease-in-out;
+		}
+
+		.showcase .project-grid .project-card .content .heading .cta-go:hover {
+			scale: 0.9;
+		}
+
+		.showcase .project-grid .project-card:hover img {
+			transform: scale(1.2);
+		}
+
+		.showcase .project-grid .project-card:hover .content .heading .cta-go {
+			margin-top: 0;
+			opacity: 1;
+		}
+
+		.showcase .project-grid .project-card:first-child {
+			grid-column: 1 / span 1;
+			grid-row: 1/2;
+			min-width: 56rem;
+		}
+
+		.showcase .project-grid .project-card:nth-child(2) {
+			grid-column: 2 / span 1;
+			grid-row: 1/2;
+			min-width: 50rem;
+		}
+
+		.showcase .project-grid .project-card:nth-child(3) {
+			grid-column: 1 / span 1;
+			grid-row: 2/3;
+			min-width: 50rem;
+			width: 50rem;
+		}
+
+		.showcase .project-grid .project-card:nth-child(4) {
+			grid-column: 2 / span 1;
+			grid-row: 2/3;
+			min-width: 56rem;
+			transform: translateX(-6rem);
+		}
+
+		.showcase .project-repo .repo {
+			width: 90em;
+			padding-left: 2em;
+			padding-right: 2em;
+			padding-bottom: 0.5em;
+		}
+
+		.showcase .project-repo .repo .label h5 {
+			font-size: 2rem;
+		}
+
+		.showcase .project-repo .repo .label .stack {
+			display: flex;
+			gap: 1em;
+		}
+
+		.showcase .project-repo .repo .cta-btns {
+			gap: 2em;
+		}
+
+		.collaborate .contact .cta-btns .cta-talk:hover > :global(.arrow-icon) {
+			transform: translateX(10px);
+		}
+
+		.collaborate .contact .cta-btns {
+			gap: 5em;
 		}
 	}
 </style>

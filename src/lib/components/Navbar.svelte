@@ -1,26 +1,32 @@
 <script>
-	import { Github, Twitter, Gmail, HamburgerMenu, Close } from '$lib/icons';
-
+	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import { Github, Twitter, Gmail, HamburgerMenu, Close } from '$lib/icons';
 
 	let navEl;
 	let open = false;
-	// onMount(() => {
-	// 	navEl.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-	// 		anchor.addEventListener('click', function (e) {
-	// 			e.preventDefault();
+	let hashID;
 
-	// 			if (window.location.pathname === '/') {
-	// 				document.querySelector(e.currentTarget.getAttribute('href')).scrollIntoView({
-	// 					behavior: 'smooth'
-	// 				});
-	// 				return;
-	// 			}
-	// 			sessionStorage.setItem('hash', e.currentTarget.getAttribute('href'));
-	// 			window.location.href = '/';
-	// 		});
-	// 	});
-	// });
+	onMount(() => {
+		hashID = sessionStorage.getItem('hash');
+
+		navEl.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+			anchor.addEventListener('click', function (e) {
+				e.preventDefault();
+				e.target.classList.add('active');
+
+				if (window.location.pathname === '/') {
+					document.querySelector(e.currentTarget.getAttribute('href')).scrollIntoView({
+						behavior: 'smooth'
+					});
+
+					return;
+				}
+				sessionStorage.setItem('hash', e.currentTarget.getAttribute('href'));
+				window.location.href = '/';
+			});
+		});
+	});
 </script>
 
 <header>
@@ -30,18 +36,18 @@
 	<nav bind:this={navEl} class={open ? 'open-nav' : ''}>
 		<Close bind:open class="close-btn" />
 
-		<ul>
-			<li><a href="#about">About</a></li>
+		<ul class="link">
+			<li><a class:active={hashID === '#about'} href="#about">About</a></li>
 			<li><a href="#">Work</a></li>
-			<li><a href="/contact">Contact</a></li>
+			<li><a class:active={$page.url.pathname === '/contact'} href="/contact">Contact</a></li>
 		</ul>
 
 		<div class="vl" />
 
 		<ul class="social">
-			<li><a href="https://github.com/destiny0114"><Github fill="#304b41" /></a></li>
-			<li><a href="https://twitter.com/home"><Twitter fill="#304b41" /></a></li>
-			<li><a href="mailto:keenelevine97@gmail.com"><Gmail fill="#304b41" /></a></li>
+			<li><a href="https://github.com/destiny0114"><Github class="social-btn" /></a></li>
+			<li><a href="https://twitter.com/home"><Twitter class="social-btn" /></a></li>
+			<li><a href="mailto:keenelevine97@gmail.com"><Gmail class="social-btn" /></a></li>
 		</ul>
 	</nav>
 
@@ -73,7 +79,6 @@
 		height: 100vh;
 		width: 50%;
 		z-index: 999;
-		text-transform: uppercase;
 		transform: translateX(100%);
 		transition: transform 0.5s ease-in-out;
 	}
@@ -114,7 +119,20 @@
 		padding: 0;
 	}
 
+	nav ul.social li a :global(.social-btn) {
+		fill: #304b41;
+	}
+
 	@media only screen and (min-width: 768px) {
+		header {
+			padding-left: 2em;
+			padding-right: 2em;
+		}
+
+		.logo {
+			width: 25em;
+		}
+
 		:global(.menu-btn) {
 			display: none;
 		}
@@ -141,8 +159,46 @@
 			opacity: 1;
 		}
 
+		nav ul.link {
+			gap: 4em;
+		}
+
 		nav ul li a {
+			position: relative;
 			color: white;
+			padding: 0;
+			font-size: 1.4rem;
+		}
+
+		nav ul.link li a.active:before {
+			position: absolute;
+			content: '';
+			width: 35%;
+			height: 1px;
+			border-bottom: 2px solid white;
+			bottom: -6px;
+		}
+
+		nav ul.link li a:before {
+			position: absolute;
+			content: '';
+			width: 0%;
+			height: 1px;
+			border-bottom: 2px solid white;
+			bottom: -6px;
+			transition: width 0.3s;
+		}
+
+		nav ul.link li a:hover:before {
+			width: 35%;
+		}
+
+		nav ul.social {
+			padding: 0;
+		}
+
+		nav ul.social li a :global(.social-btn) {
+			fill: white;
 		}
 
 		.vl {
@@ -162,72 +218,13 @@
 			transform: translate(0, -50%);
 		}
 	}
-	/* .logo {
-		width: 25em;
-	}
 
-	nav {
-		display: flex;
-		align-items: center;
+	@media only screen and (min-width: 1440px) {
+		header {
+			padding-left: 0;
+			padding-right: 0;
+		}
 	}
-
-	nav ul {
-		list-style-type: none;
-		margin: 0;
-		padding: 0;
-		display: flex;
-		gap: 1em;
-	}
-
-	nav ul:first-child {
-		gap: 4em;
-	}
-
-	nav ul li a {
-		text-decoration: none;
-		color: white;
-		position: relative;
-		font-size: 1.4rem;
-	}
-
-	nav ul:first-child li a.active:before {
-		position: absolute;
-		content: '';
-		width: 35%;
-		height: 1px;
-		border-bottom: 2px solid white;
-		bottom: -6px;
-	}
-
-	nav ul:first-child li a:before {
-		position: absolute;
-		content: '';
-		width: 0%;
-		height: 1px;
-		border-bottom: 2px solid white;
-		bottom: -6px;
-		transition: width 0.3s;
-	}
-
-	nav ul:first-child li a:hover:before {
-		width: 35%;
-	}
-
-	.vl {
-		position: relative;
-		margin: 0 2em;
-	}
-
-	.vl:after {
-		content: '';
-		position: absolute;
-		width: 2px;
-		min-height: 20px;
-		right: -3px;
-		background: #54746e;
-		top: 50%;
-		transform: translate(0, -50%);
-	} */
 	.open-nav {
 		transform: translateX(0%);
 	}
