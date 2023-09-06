@@ -4,6 +4,7 @@
 	import Show from '$lib/icons/Show.svelte';
 
 	export let key;
+	export let item;
 
 	const { current } = getAccordionContext();
 
@@ -17,7 +18,7 @@
 <div class={`accordion-item`}>
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div class="label" on:click={handleClick}>
-		<h4><span class="numeric">0{key + 1}</span><slot name="label" /></h4>
+		<h4><span class="numeric">0{key + 1}</span>{item.label}</h4>
 		<div class="icon">
 			{#if open}
 				<Minus />
@@ -28,7 +29,7 @@
 	</div>
 	<div class={open ? 'content active' : 'content'}>
 		<p class="description">
-			<slot name="description" />
+			{item.description}
 		</p>
 	</div>
 </div>

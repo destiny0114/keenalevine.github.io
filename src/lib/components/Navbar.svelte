@@ -38,7 +38,7 @@
 
 		<ul class="link">
 			<li><a class:active={hashID === '#about'} href="#about">About</a></li>
-			<li><a href="#">Work</a></li>
+			<li><a class:active={$page.url.pathname === '/work'} href="/work">Work</a></li>
 			<li><a class:active={$page.url.pathname === '/contact'} href="/contact">Contact</a></li>
 		</ul>
 

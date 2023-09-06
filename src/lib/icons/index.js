@@ -18,3 +18,6 @@ export { default as Arrowup } from '$lib/icons/Arrow-up.svelte';
 export { default as Line } from '$lib/icons/Line.svelte';
 export { default as HamburgerMenu } from '$lib/icons/HamburgerMenu.svelte';
 export { default as Close } from '$lib/icons/Close.svelte';
+export { default as Dot } from '$lib/icons/Dot.svelte';
+export { default as Back } from '$lib/icons/Arrow-back.svelte';
+export { default as Info } from '$lib/icons/Info.svelte';

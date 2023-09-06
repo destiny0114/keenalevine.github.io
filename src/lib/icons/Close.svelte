@@ -2,10 +2,11 @@
 	let className;
 	export { className as class };
 
+	export let width = 32;
+	export let height = 32;
 	export let open = false;
 
 	function handleClick() {
-		console.log('clicked');
 		open = !open;
 	}
 </script>
@@ -15,8 +16,8 @@
 	on:click={handleClick}
 	class={className}
 	xmlns="http://www.w3.org/2000/svg"
-	width="32"
-	height="32"
+	{width}
+	{height}
 	viewBox="0 0 24 24"
 	><path
 		fill="currentColor"

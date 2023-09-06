@@ -42,3 +42,15 @@ img {
 	-ms-user-drag: none;
 	user-drag: none;
 }
+
+a,
+area,
+button,
+[role='button'],
+input,
+label,
+select,
+summary,
+textarea {
+	touch-action: manipulation;
+}
