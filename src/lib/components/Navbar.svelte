@@ -10,6 +10,8 @@
 	onMount(() => {
 		hashID = sessionStorage.getItem('hash');
 
+		if (!hashID) return;
+
 		navEl.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 			anchor.addEventListener('click', function (e) {
 				e.preventDefault();
@@ -37,7 +39,7 @@
 		<Close bind:open class="close-btn" />
 
 		<ul class="link">
-			<li><a class:active={hashID === '#about'} href="#about">About</a></li>
+			<li><a class:active={hashID === '#about'} href="/#about">About</a></li>
 			<li><a class:active={$page.url.pathname === '/work'} href="/work">Work</a></li>
 			<li><a class:active={$page.url.pathname === '/contact'} href="/contact">Contact</a></li>
 		</ul>

@@ -88,7 +88,7 @@
 	}
 
 	.project-showcase .project-showcase-inner .project-showcase-bg {
-		background: url('images/showcase-bg.jpg') no-repeat 50% 50% / cover;
+		background: url('/images/showcase-bg.jpg') no-repeat 50% 50% / cover;
 		background-size: cover;
 		position: absolute;
 		left: 0;

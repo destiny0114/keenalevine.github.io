@@ -28,10 +28,7 @@
 			<div class="content">
 				<h1 class="heading">Drop a line</h1>
 				<h1 class="heading-2"><Line class="line" />Let’s work together ?</h1>
-				<p>
-					If you’re interested in working with me, or collaborating on a project, i’m love to hear
-					from you.
-				</p>
+				<p>If you’re interested in working with me, or collaborating on a project, i’m love to hear from you.</p>
 
 				<div class="cta-btn">
 					<h5>Get in touch</h5>
