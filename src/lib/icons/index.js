@@ -12,6 +12,7 @@ export { default as Wix } from '$lib/icons/Wix.svelte';
 export { default as Redirect } from '$lib/icons/Redirect.svelte';
 export { default as Github } from '$lib/icons/Github.svelte';
 export { default as Download } from '$lib/icons/Download.svelte';
+export { default as Linkedin } from '$lib/icons/Linkedin.svelte';
 export { default as Gmail } from '$lib/icons/Gmail.svelte';
 export { default as Twitter } from '$lib/icons/Twitter.svelte';
 export { default as Arrowup } from '$lib/icons/Arrow-up.svelte';

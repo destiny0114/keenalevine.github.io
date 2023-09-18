@@ -1,11 +1,11 @@
 <script>
-	import { gsap, ScrollTrigger, Bounce } from '$lib/helpers/gsap';
+	import { gsap } from '$lib/helpers/gsap';
 	import { onMount } from 'svelte';
 
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Accordion from '$lib/components/Accordion.svelte';
 	import AccordionItem from '$lib/components/AccordionItem.svelte';
-	import { Arrow, Subtract, Square, Plus, PS, AI, XD, Figma, Wordpress, Webflow, Wix, Redirect, Github, Download, Gmail, Twitter, Arrowup } from '$lib/icons';
+	import { Arrow, Subtract, Square, Plus, PS, AI, XD, Figma, Wordpress, Webflow, Wix, Linkedin, Github, Download, Gmail, Twitter, Arrowup } from '$lib/icons';
 
 	import { AccordionStore } from '$lib/stores/AccordionStore';
 
@@ -399,6 +399,7 @@
 				<div class="social">
 					<h5>keenalevine97@gmail.com</h5>
 					<div class="media">
+						<a href="https://www.linkedin.com/in/keena-levine-b56711291"><Linkedin /></a>
 						<a href="https://github.com/destiny0114"><Github /></a>
 						<a href="https://twitter.com/home"><Twitter /></a>
 						<a href="mailto:keenelevine97@gmail.com"><Gmail /></a>
@@ -947,6 +948,14 @@
 		gap: 1em;
 	}
 
+	.collaborate .contact .social {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1em;
+	}
+
 	.collaborate .contact .social > * {
 		opacity: 1;
 	}
@@ -958,6 +967,16 @@
 		line-height: 1.8rem;
 		color: white;
 		margin: 0;
+	}
+
+	.collaborate .contact .social .media {
+		display: flex;
+		align-items: center;
+		gap: 1em;
+	}
+
+	.collaborate .contact .social .media a {
+		padding: 0;
 	}
 
 	.collaborate footer {
