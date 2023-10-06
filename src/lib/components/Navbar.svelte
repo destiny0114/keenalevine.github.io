@@ -47,7 +47,7 @@
 		<div class="vl" />
 
 		<ul class="social">
-			<li><a href="https://www.linkedin.com/in/keena-levine-b56711291"><Linkedin class="social-btn" /></a></li>
+			<li><a href="https://www.linkedin.com/in/keena-levine"><Linkedin class="social-btn" /></a></li>
 			<li><a href="https://github.com/destiny0114"><Github class="social-btn" /></a></li>
 			<li><a href="https://twitter.com/home"><Twitter class="social-btn" /></a></li>
 			<li><a href="mailto:keenelevine97@gmail.com"><Gmail class="social-btn" /></a></li>
