@@ -399,7 +399,7 @@
 				<div class="social">
 					<h5>keenalevine97@gmail.com</h5>
 					<div class="media">
-						<a href="https://www.linkedin.com/in/keena-levine-b56711291"><Linkedin /></a>
+						<a href="https://www.linkedin.com/in/keena-levine"><Linkedin /></a>
 						<a href="https://github.com/destiny0114"><Github /></a>
 						<a href="https://twitter.com/home"><Twitter /></a>
 						<a href="mailto:keenelevine97@gmail.com"><Gmail /></a>
